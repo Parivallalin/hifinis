@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hifinis — Hi-Res Music Player for Android</title>
+<meta name="description" content="Hifinis is an offline hi-res music player for Android with bit-perfect USB DAC output, a parametric EQ and 100+ presets. No ads, no accounts, no tracking. By Curvio Studio.">
+<meta property="og:title" content="Hifinis — Hi-Res Music Player for Android">
+<meta property="og:description" content="Offline hi-res music player with bit-perfect USB DAC output and a parametric EQ. By Curvio Studio.">
+<style>
+  :root { --bg: #ffffff; --fg: #1c1c28; --muted: #5b5b6e; --line: #e4e4ec; --accent: #3b5bdb; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #12121a; --fg: #e6e6ef; --muted: #a0a0b4; --line: #2a2a38; --accent: #8ab4ff; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 2.4em; margin: 0; letter-spacing: -0.02em; }
+  .by { color: var(--muted); margin: 4px 0 20px; }
+  .lead { font-size: 1.15em; }
+  h2 { font-size: 1.15em; margin-top: 2em; border-top: 1px solid var(--line); padding-top: 1.2em; }
+  ul { padding-left: 1.2em; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 0.9em; margin-top: 3em; }
+  .btn { display: inline-block; background: var(--accent); color: var(--bg); font-weight: 600;
+         text-decoration: none; padding: 12px 22px; border-radius: 999px; margin: 4px 8px 4px 0; }
+  .btn.alt { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  .note { color: var(--muted); font-size: 0.9em; }
+  .shots { display: flex; gap: 12px; overflow-x: auto; padding: 8px 0 12px; scroll-snap-type: x mandatory; }
+  .shots img { height: 420px; max-width: none; border-radius: 18px; border: 1px solid var(--line); scroll-snap-align: start; }
+  @media (max-width: 480px) { .shots img { height: 340px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Hifinis</h1>
+  <p class="by">Hi-Res Music Player for Android · by Curvio Studio</p>
+  <p class="lead">An offline music player for people who care how their music sounds. It plays your
+  files the way they were recorded and gives you real control over the signal path — no account,
+  no ads, no tracking.</p>
+  <p>
+    <a class="btn" href="https://github.com/Parivallalin/hifinis/releases/latest">Download for Android</a>
+    <a class="btn alt" href="https://t.me/curviostudio">Telegram updates</a>
+  </p>
+  <p class="note">Free beta · Android 8 or newer · pick <em>Hifinis-…-arm64.apk</em> (almost every phone).
+  The app tells you when a new version is out and updates itself. Google Play release coming soon.</p>
+
+  <div class="shots">
+    <img src="screenshots/01-welcome.png" alt="Welcome screen: choose light or dark and a colour" loading="lazy">
+    <img src="screenshots/03-eq.png" alt="10-band equalizer with the Harman Target preset" loading="lazy">
+    <img src="screenshots/06-parametric.png" alt="Parametric EQ with drag-the-curve filters" loading="lazy">
+    <img src="screenshots/05-effects.png" alt="Pre-amp, bass boost, 3D surround, Enhance and Crossfeed" loading="lazy">
+    <img src="screenshots/02-home.png" alt="Home screen before adding music" loading="lazy">
+    <img src="screenshots/04-settings.png" alt="Settings" loading="lazy">
+  </div>
+
+  <h2>Bit-perfect playback</h2>
+  <ul>
+    <li>Three output engines: Android, Native (Oboe, low-latency) and Exclusive USB</li>
+    <li>Exclusive USB streams straight to your USB DAC, bypassing Android's mixer and its forced resampling</li>
+    <li>Plays at the file's own sample rate where the DAC supports it — up to 384 kHz / 32-bit, plus native DSD</li>
+    <li>Separate DAC volume with a gentle fade-in</li>
+  </ul>
+
+  <h2>Formats</h2>
+  <p>FLAC, ALAC, WAV, AIFF, APE, DSF/DFF, MP3, AAC/M4A, Ogg, Opus, WMA, MKA.</p>
+
+  <h2>Sound shaping</h2>
+  <ul>
+    <li>Parametric EQ with drag-the-curve editing and a live spectrum</li>
+    <li>Graphic EQ (10, 15 or 31 bands) with 100+ searchable presets</li>
+    <li>Hifinis Enhance — 100 voicings: warmth, air, bass shelf, vocal lift and more</li>
+    <li>Per-output sound profiles, crossfade, gapless, ReplayGain, A-B repeat</li>
+  </ul>
+
+  <h2>Library</h2>
+  <ul>
+    <li>Folder-based — Hifinis only sees the folders you choose</li>
+    <li>Albums, artists, genres, playlists, favourites and a built-in tag editor</li>
+    <li>Reads .m3u, .m3u8, .pls, .xspf and .wpl playlist files</li>
+    <li>Synced lyrics with on-device translation</li>
+    <li>Optional home servers and network shares: Jellyfin, Plex, Subsonic, SMB, WebDAV, DLNA</li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>No analytics, no ad SDKs, no user accounts. Your library, play history and settings never
+  leave your device. Read the full <a href="privacy.html">privacy policy</a>.</p>
+
+  <footer>
+    <p>Hifinis · Curvio Studio · <a href="mailto:parivallalin@gmail.com">parivallalin@gmail.com</a></p>
+  </footer>
+</main>
+</body>
+</html>
