@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://parivallalin.github.io/hifinis/sitemap.xml
