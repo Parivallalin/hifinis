@@ -5,7 +5,7 @@ It plays your files the way they were recorded — bit-perfect to your USB DAC, 
 31-band EQ, 120 presets, FLAC / ALAC / DSD, gapless, synced lyrics and a built-in Audio Studio.
 No account, no ads, no tracking.
 
-**[⬇ Download the latest Hifinis APK](https://github.com/Parivallalin/hifinis/releases/latest)** · free · Android 8+
+**[⬇ Download the latest Hifinis APK](https://github.com/Parivallalin/hifinis/releases/latest)** · Android 8+
 
 <p><img src="screenshots/03-eq.webp" width="200" alt="Hifinis equalizer"> <img src="screenshots/06-parametric.webp" width="200" alt="Hifinis parametric EQ"> <img src="screenshots/05-effects.webp" width="200" alt="Hifinis effects"></p>
 
