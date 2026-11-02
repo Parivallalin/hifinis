@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hifinis User Guide</title>
+<meta name="description" content="How to use Hifinis: library, Now Playing, audio engines, USB DACs, EQ and effects, lyrics, sources, Audio Studio, Composer and Synth designer, Workshop, troubleshooting.">
+<link rel="icon" href="favicon.png">
+<link rel="canonical" href="https://parivallalin.github.io/hifinis/guide.html">
+<style>
+  :root { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg:#f6f6fb; --bg2:#ffffff; --card:#ffffff; --line:#e3e4ee; --fg:#161826; --muted:#5a5f78; --accent:#3b5bdb; --accent2:#8a3ffc; --cyan:#0b8fb3; } }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); color:var(--fg); line-height:1.65; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header.top { position:sticky; top:0; z-index:5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom:1px solid var(--line); }
+  header.top .wrap { display:flex; align-items:center; gap:12px; height:60px; max-width:1080px; margin:0 auto; padding:0 16px; }
+  header.top img { width:32px; height:32px; border-radius:9px; }
+  header.top b { font-size:1.1em; }
+  header.top nav { margin-left:auto; display:flex; gap:18px; font-size:0.95em; }
+  header.top nav a { color:var(--muted); text-decoration:none; }
+  header.top nav a:hover { color:var(--fg); }
+  .page { max-width:1080px; margin:0 auto; padding:0 16px 80px; display:grid; grid-template-columns: 250px minmax(0,1fr); gap:40px; }
+  aside { position:sticky; top:76px; align-self:start; max-height: calc(100vh - 90px); overflow:auto; padding-top:32px; }
+  aside ol { list-style:none; padding:0; margin:0; font-size:0.92em; }
+  aside li { margin:2px 0; }
+  aside a { color:var(--muted); text-decoration:none; display:block; padding:5px 10px; border-radius:8px; }
+  aside a:hover { color:var(--fg); background:var(--card); }
+  main { min-width:0; padding-top:28px; }
+  h1 { font-size: clamp(2em, 5vw, 2.8em); letter-spacing:-0.03em; line-height:1.1; margin:6px 0 6px; }
+  h1 span { background: linear-gradient(90deg, var(--cyan), var(--accent), var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .byline { color:var(--muted); font-size:0.92em; margin:0 0 18px; }
+  h2 { font-size:1.55em; letter-spacing:-0.02em; margin:56px 0 8px; padding-top:12px; border-top:1px solid var(--line); scroll-margin-top:70px; }
+  h3 { font-size:1.12em; margin:28px 0 6px; scroll-margin-top:70px; }
+  p, li { max-width: 760px; }
+  code { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1px 6px; font-size:0.9em; }
+  .tbl { overflow-x:auto; margin:14px 0 18px; border:1px solid var(--line); border-radius:14px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; font-size:0.93em; }
+  th, td { text-align:left; vertical-align:top; padding:10px 14px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; background:var(--bg2); }
+  tr:last-child td { border-bottom:none; }
+  ol, ul { padding-left: 1.4em; }
+  li { margin: 4px 0; }
+  .back { margin-top:48px; }
+  footer { border-top:1px solid var(--line); color:var(--muted); font-size:0.9em; text-align:center; padding:24px 16px; }
+  @media (max-width: 860px) { .page { display:block; } aside { position:static; max-height:none; padding-top:20px; }
+     aside ol { display:flex; flex-wrap:wrap; gap:6px; } aside a { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:4px 12px; }
+     header.top nav a.opt { display:none; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a href="./"><img src="icon-192.png" alt="Hifinis"></a><b>Hifinis</b>
+  <nav><a class="opt" href="./#features">Features</a><a href="guide.html">User guide</a><a class="opt" href="privacy.html">Privacy</a><a href="./#install">Get it</a></nav>
+</div></header>
+<div class="page">
+<aside><ol><li><a href="#getting-started">1. Getting started</a></li><li><a href="#finding-your-way">2. Finding your way</a></li><li><a href="#your-library">3. Your library</a></li><li><a href="#now-playing-and-the-queue">4. Now Playing and the queue</a></li><li><a href="#audio-engines-and-outputs">5. Audio engines and outputs</a></li><li><a href="#usb-dacs">6. USB DACs</a></li><li><a href="#shaping-the-sound">7. Shaping the sound</a></li><li><a href="#lyrics">8. Lyrics</a></li><li><a href="#sources-and-radio">9. Sources and radio</a></li><li><a href="#look-and-feel">10. Look and feel</a></li><li><a href="#audio-studio">11. Audio Studio</a></li><li><a href="#composer">12. Composer</a></li><li><a href="#workshop-and-labs">13. Workshop and labs</a></li><li><a href="#extras">14. Extras</a></li><li><a href="#troubleshooting-and-reporting-a-problem">15. Troubleshooting and reporting a problem</a></li></ol></aside>
+<main>
+<h1><span>Hifinis User Guide</span></h1>
+<p class="byline">For Hifinis 2.5.11 · Updated 2 November 2026 · Curvio Studio</p>
+<p>Hifinis is a music player for Android built around exact, untouched sound: it plays your own files on the phone, wired headphones, Bluetooth and USB DACs, with a full set of sound tools, an Audio Studio and a Composer.</p>
+<h2 id="getting-started">1. Getting started</h2>
+<p>Install Hifinis from Google Play, allow it to read your music, and it finds your songs by itself. Everything is unlocked for 14 days; after that one payment keeps it.</p>
+<ol><li><strong>Install</strong> Hifinis from Google Play and open it.</li><li><strong>Allow access to your music.</strong> Hifinis shows <em>Hifinis needs access to your music library</em> — tap <strong>Grant access</strong>. Also allow notifications, so the player controls appear on the lock screen and in the notification shade.</li><li><strong>Let it scan.</strong> Your library fills in by itself. Later scans only read what changed, so they are quick.</li><li><strong>Pick your folders (optional).</strong> Go to <strong>Settings → Library → Music folders → Add a music folder</strong> to add a folder Android does not index, such as a USB stick or a folder with a <code>.nomedia</code> file.</li><li><strong>Choose a language (optional).</strong> Hifinis follows your phone's language. To change it: <strong>Settings → Language</strong>. Thirteen languages are included.</li></ol>
+<h3 id="getting-started-trial-and-purchase">Trial and purchase</h3>
+<div class="tbl"><table><thead><tr><th>What you see</th><th>What it means</th><th>What you can do</th></tr></thead><tbody>
+<tr><td><em>Free trial — N days left</em> (top of Settings)</td><td>Every feature is on</td><td>Keep using it, or tap <strong>Unlock</strong> at any time</td></tr>
+<tr><td><em>Your 14-day trial has ended</em></td><td>Playback is paused until unlocked</td><td><strong>Unlock Hifinis</strong> — one payment, no subscription, no ads</td></tr>
+<tr><td><em>Hifinis is unlocked</em></td><td>You own it</td><td>Nothing — your library, playlists, EQ and settings stay as they are</td></tr>
+</tbody></table></div>
+<ul><li><strong>Promo code:</strong> tap <strong>I have a promo code</strong>. Codes are redeemed in the Play Store app; come back and tap <strong>Restore</strong>.</li><li><strong>New phone or reinstall:</strong> tap <strong>Restore purchase</strong> — signed in with the same Google account, the unlock comes back.</li><li>Members of the Curvio Community Telegram group can ask there for a free promo code.</li></ul>
+<h2 id="finding-your-way">2. Finding your way</h2>
+<p>Four tabs in the floating bar at the bottom take you everywhere; the mini player above them shows the current song.</p>
+<div class="tbl"><table><thead><tr><th>Tab</th><th>What it opens</th></tr></thead><tbody>
+<tr><td><strong>Home</strong> (four squares)</td><td>Your library, shortcuts, the audio engine switch, recently played</td></tr>
+<tr><td><strong>Sound</strong> (bars)</td><td>Equalizer, Effects and Advanced sound settings</td></tr>
+<tr><td><strong>Search</strong> (magnifier)</td><td>Search songs, albums, artists, folders and lyrics</td></tr>
+<tr><td><strong>Settings</strong> (sliders)</td><td>Quick settings, every setting, and the Studio &amp; music world tools</td></tr>
+</tbody></table></div>
+<p><strong>The mini player:</strong> tap it to open Now Playing; use its ⏮ ⏯ ⏭ buttons without leaving the page you are on.</p>
+<h3 id="finding-your-way-home">Home</h3>
+<ul><li><strong>Search bar</strong> at the top.</li><li><strong>Library shortcuts:</strong> Songs, Albums, Artists, Lists (playlists), Folders, Faves and Sources. The big centre button shuffles your whole library.</li><li><strong>Browse button</strong> (four squares, top right): every library view with counts — All Songs, Folders, Albums, Artists, Album Artists, Genres, Composers, Years, Playlists, Favorites.</li><li><strong>Layout button</strong> (top right): switch the Home layout and style. See <em>Look and feel</em>.</li><li><strong>Audio engine:</strong> three buttons — <strong>Android</strong>, <strong>Hi-Res</strong> and <strong>USB DAC</strong> — with the current output shown above them. See <em>Audio engines and outputs</em>.</li><li><strong>Recently played</strong> and other shelves below.</li></ul>
+<h3 id="finding-your-way-settings">Settings</h3>
+<p>Settings opens on <strong>Quick settings</strong> (engine, resampling, crossfeed, ReplayGain, DAC volume) and <strong>Recently opened</strong> pages. Below them the settings are grouped:</p>
+<div class="tbl"><table><thead><tr><th>Group</th><th>Pages</th></tr></thead><tbody>
+<tr><td>Sound</td><td>Effects &amp; DSP · Audio &amp; output · Playback &amp; queue</td></tr>
+<tr><td>Devices</td><td>Your devices · Headset, Bluetooth &amp; car · Shortcuts &amp; gestures</td></tr>
+<tr><td>Library &amp; looks</td><td>Look and feel · Library · Playlists · Sources &amp; streaming</td></tr>
+<tr><td>Screens &amp; alerts</td><td>Lock screen &amp; widgets · Notifications</td></tr>
+<tr><td>System</td><td>Advanced · Backup &amp; restore · Language · About</td></tr>
+<tr><td>Studio &amp; music world</td><td>Audio Studio, Composer, Workshop, labs and other tools (tiles)</td></tr>
+</tbody></table></div>
+<p><strong>Tip:</strong> the magnifier at the top of Settings searches every setting by name or by what it does — type <em>gapless</em>, <em>crossfade</em> or <em>DAC volume</em> and tap the result.</p>
+<h2 id="your-library">3. Your library</h2>
+<p>Tap a song to play it; tap the <strong>⋮</strong> beside any song for everything else you can do with it.</p>
+<h3 id="your-library-browsing">Browsing</h3>
+<ul><li><strong>Views:</strong> All Songs, Albums, Artists, Album Artists, Folders, Genres, Composers, Years, Playlists and Favorites (Home → browse button, or the shortcuts on Home).</li><li><strong>Albums grid:</strong> pinch to change how many albums fit in a row (2 to 6). Hifinis remembers your choice.</li><li><strong>Artist pages:</strong> a photo, a short biography and the artist's albums. Tap the photo to see it full size.</li><li><strong>Pull down</strong> on a list to refresh the library.</li></ul>
+<h3 id="your-library-the-song-menu">The song menu (⋮)</h3>
+<div class="tbl"><table><thead><tr><th>Action</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Play next</td><td>Puts the song right after the current one</td></tr>
+<tr><td>Add to queue</td><td>Adds it to the end of the queue</td></tr>
+<tr><td>Add to playlist</td><td>Adds it to a playlist, or to a <strong>New playlist…</strong></td></tr>
+<tr><td>Edit tags</td><td>Opens the tag editor (title, artist, album, cover, lyrics and more)</td></tr>
+<tr><td>Audio cutter</td><td>Cuts a part of the song into a new file</td></tr>
+<tr><td>Audio Studio</td><td>Opens the song in Audio Studio</td></tr>
+<tr><td>Set as ringtone</td><td>Makes the song your phone's ringtone</td></tr>
+<tr><td>Share</td><td>Sends the file to another app</td></tr>
+<tr><td>Song info</td><td>Format, sample rate, bit depth, bitrate, file location and tags</td></tr>
+<tr><td>Delete permanently</td><td>Removes the file from the phone (asks first)</td></tr>
+</tbody></table></div>
+<h3 id="your-library-playlists">Playlists</h3>
+<ul><li><strong>Your playlists:</strong> create with <strong>New playlist</strong>, then rename or delete from the playlist's menu.</li><li><strong>Favorites:</strong> tap the heart on Now Playing or in a song menu.</li><li><strong>Smart playlists</strong> fill themselves: <em>Recently added</em>, <em>Recently played</em>, <em>Most played</em> and <em>Never played</em>.</li><li><strong>Playlist files:</strong> <code>.m3u</code> / <code>.m3u8</code> playlists in your music folders open as playlists. Import and export are under <strong>Settings → Playlists</strong>.</li></ul>
+<h3 id="your-library-editing-tags">Editing tags</h3>
+<p>The tag editor writes straight into the file, for MP3, FLAC, M4A, WAV and other formats.</p>
+<ol><li>Open <strong>⋮ → Edit tags</strong>.</li><li>Change any field, or tap <strong>Add field</strong> for a less common one (composer, ISRC, custom fields).</li><li><strong>Lyrics:</strong> <strong>Find lyrics online</strong> searches your lyrics server and saves the chosen lyrics into the file; <strong>Import from file</strong> takes an <code>.lrc</code>, <code>.srt</code>, <code>.ttml</code> or <code>.txt</code> file.</li><li>Save. The library updates without a full rescan.</li></ol>
+<h3 id="your-library-library-settings">Library settings</h3>
+<p><strong>Settings → Library:</strong> add or remove music folders, rescan, <em>Re-read tags from your music folders</em> (after editing tags in another app), and clear the cache.</p>
+<h2 id="now-playing-and-the-queue">4. Now Playing and the queue</h2>
+<p>Now Playing is the full-screen player: cover, transport, volume, the sound path, and quick actions. Swipe down or tap <strong>⌄</strong> to minimise it.</p>
+<h3 id="now-playing-and-the-queue-controls">Controls</h3>
+<div class="tbl"><table><thead><tr><th>Control</th><th>How to use it</th></tr></thead><tbody>
+<tr><td>Play / pause, previous, next</td><td>The big buttons. Next/previous while paused moves to the song but stays paused</td></tr>
+<tr><td>Change song by swiping</td><td>Swipe the cover left or right</td></tr>
+<tr><td>Seek</td><td>Drag the bar. Long-press ⏪ or ⏩ to skip by a few seconds (set the step under <em>Skip by</em>)</td></tr>
+<tr><td>Shuffle / repeat</td><td>Left and right of the transport. Repeat cycles off → all → one</td></tr>
+<tr><td>Volume</td><td>The bar under the transport, with − and + and the level in % and dB</td></tr>
+<tr><td>Favourite</td><td>The heart</td></tr>
+<tr><td>Add to playlist, Lyrics, Info</td><td>The round buttons under the volume bar</td></tr>
+<tr><td>More (⋮)</td><td>Sleep timer, playback speed, A-B loop, Audio cutter, Audio Studio, Share card, Visual show, Spectrum analyser, Sing this song, Equalizer, Tone and more</td></tr>
+<tr><td>Cast</td><td>The screen-with-waves button at the top: play on a TV, speaker or receiver</td></tr>
+<tr><td>Queue</td><td>The list button at the top right</td></tr>
+</tbody></table></div>
+<h3 id="now-playing-and-the-queue-reading-the-sound-path">Reading the sound path</h3>
+<ul><li><strong>The pill</strong> under the transport shows the file (format, bit depth, sample rate, bitrate), the engine and the output, plus a quality chip such as <em>CD quality</em>, <em>Hi-Res</em> or <em>Lossy</em>. Tap it for the full <strong>Signal path</strong>: every step from the file to your ears and whether anything changes the sound.</li><li><strong>✓ HIFINIS PURE</strong> appears on the cover when the song reaches the output bit-perfect — every sample exactly as in the file. It disappears when something changes the audio (EQ, software volume, resampling and so on).</li><li><strong>SOFT VOL</strong> means Hifinis is lowering the volume digitally. Use your DAC's hardware volume to keep the sound bit-perfect (see <em>USB DACs</em>).</li></ul>
+<h3 id="now-playing-and-the-queue-the-queue">The queue</h3>
+<ul><li><strong>Reorder:</strong> drag a song by its handle. Swipe or use <strong>⋮ → Remove from queue</strong> to take it out; <strong>Undo</strong> brings it back.</li><li><strong>Song options:</strong> Play next, Move to the end, Go to album, Audio details, Add to playlist.</li><li><strong>Save this queue</strong> keeps it under a name. <strong>Saved queues</strong> lists them; every queue you play is also saved there automatically.</li><li><strong>New suggestions</strong> offers songs that sound like the current one; <strong>Add all</strong> puts them in the queue.</li><li><strong>When the queue ends:</strong> Hifinis can <em>play the next album or folder</em> (the default), <em>keep playing similar songs</em>, or stop. Choose under <strong>⋮ → Queue end</strong>.</li></ul>
+<h3 id="now-playing-and-the-queue-sleep-timer">Sleep timer</h3>
+<p><strong>⋮ → Sleep timer</strong> (or Quick settings): stop after a set time or at the <em>End of current track</em>.</p>
+<h3 id="now-playing-and-the-queue-customising-now-playing">Customising Now Playing</h3>
+<p>Now Playing has several layouts and cover styles (square, vinyl, sleeve, polaroid and more), a cover tint and animation settings. Find them under <strong>Settings → Look and feel → Now Playing layout</strong>.</p>
+<h2 id="audio-engines-and-outputs">5. Audio engines and outputs</h2>
+<p>Hifinis has three engines; pick one on Home (<strong>Android · Hi-Res · USB DAC</strong>) or in <strong>Settings → Quick settings → Engine</strong> (Android · Bit-perfect · USB Exclusive). Hi-Res and Bit-perfect are the same engine.</p>
+<div class="tbl"><table><thead><tr><th>Engine</th><th>How the sound travels</th><th>Best for</th><th>Trade-off</th></tr></thead><tbody>
+<tr><td><strong>Android</strong></td><td>Through Android's own player and mixer</td><td>Any output; casting; the most compatible</td><td>Android usually converts every song to 48 kHz</td></tr>
+<tr><td><strong>Hi-Res (Bit-perfect)</strong></td><td>Hifinis' own engine, straight to the output. On Android 14+ with a USB DAC it uses Android's bit-perfect mode, so each song plays at its own rate</td><td>Wired headphones, Bluetooth, USB DACs while other apps keep sound</td><td>On outputs without a bit-perfect path, Android still converts after Hifinis</td></tr>
+<tr><td><strong>USB Exclusive</strong></td><td>Hifinis talks to the USB DAC directly, without Android in between</td><td>The purest sound from a USB DAC: every rate the DAC supports, native DSD, hardware volume</td><td>Other apps can't use the DAC while Hifinis holds it</td></tr>
+</tbody></table></div>
+<p><strong>Which should I use?</strong></p>
+<ul><li>Phone speaker or Bluetooth → <strong>Hi-Res</strong> (or Android if something misbehaves).</li><li>Wired headphones in the phone's jack → <strong>Hi-Res</strong>.</li><li>USB DAC or dongle → <strong>USB Exclusive</strong> for the best sound; <strong>Hi-Res</strong> if you also want notifications, calls and other apps to keep using it.</li><li>USB headsets with a microphone (gaming headsets, earbuds with a mic) start on <strong>Hi-Res</strong>, so calls and the mic keep working. You can still pick USB Exclusive by hand.</li></ul>
+<p>Settings that only make sense for one engine are greyed out or labelled on the others.</p>
+<h3 id="audio-engines-and-outputs-outputs-playing-on-several-devices-at-once">Outputs: playing on several devices at once</h3>
+<p>Tap the <strong>Outputs</strong> button on Now Playing to see every output: phone speaker, wired, Bluetooth, USB DAC.</p>
+<ul><li>Tick several to play on all of them together, for example a DAC and a Bluetooth speaker.</li><li><strong>Play only here</strong> sends the music to one output and leaves the others alone.</li><li>Each output has its own volume, left/right balance and a sync delay to line them up.</li></ul>
+<h3 id="audio-engines-and-outputs-phone-hi-res-offload">Phone Hi-Res (offload)</h3>
+<p>On some phones (Qualcomm, Android 11 and older) the wired jack can play 44.1 kHz and above only through the phone's audio chip. Turn on <strong>Settings → Audio &amp; output → Audio outputs → Phone Hi-Res offload</strong> to use it. The phone's chip then decodes the file itself, so Hifinis' EQ and effects don't apply.</p>
+<h3 id="audio-engines-and-outputs-bluetooth">Bluetooth</h3>
+<p>Bluetooth always re-encodes the sound with its own codec (SBC, AAC, aptX, LDAC), so it can never be bit-perfect. The codec is chosen in Android's Developer options, not by apps. Hifinis sends the best signal it can and shows the route in the sound-path pill.</p>
+<h3 id="audio-engines-and-outputs-calls-and-other-apps">Calls and other apps</h3>
+<p>When a call rings or another app starts playing, Hifinis pauses and, in USB Exclusive, hands the DAC back so the ringtone can sound. After the call it can resume by itself (<strong>Settings → Audio &amp; output → Audio focus → Resume after call</strong>).</p>
+<h2 id="usb-dacs">6. USB DACs</h2>
+<p>Plug in the DAC, allow Hifinis to use it, choose <strong>USB DAC</strong> on Home, and every song plays at its own sample rate, untouched.</p>
+<h3 id="usb-dacs-first-connection">First connection</h3>
+<ol><li>Plug the DAC or dongle into the phone's USB-C port.</li><li>Android asks whether Hifinis may use the device — tap <strong>OK</strong> (tick <em>always</em> if offered).</li><li>On Home, tap <strong>USB DAC</strong> (USB Exclusive). To switch automatically every time a DAC is plugged in, turn on <strong>Settings → Audio &amp; output → Audio focus → Switch to exclusive USB for a DAC</strong>.</li><li>Press play. The pill on Now Playing shows <em>USB EXCLUSIVE · BIT-PERFECT</em> and the cover shows <strong>✓ HIFINIS PURE</strong>.</li></ol>
+<h3 id="usb-dacs-volume-software-hardware-or-fixed">Volume: software, hardware, or fixed</h3>
+<p>Choose in <strong>Quick settings → DAC volume</strong> or on the DAC's own page (<strong>Volume type</strong>).</p>
+<div class="tbl"><table><thead><tr><th>Volume type</th><th>How the level is set</th><th>Bit-perfect?</th></tr></thead><tbody>
+<tr><td><strong>Hardware</strong></td><td>Inside the DAC, using its own volume control</td><td>Yes, at every level</td></tr>
+<tr><td><strong>Software</strong></td><td>Hifinis lowers the samples digitally</td><td>Only at 100%</td></tr>
+<tr><td><strong>Auto</strong></td><td>Hardware when the DAC has a volume control, software otherwise</td><td>Depends on the DAC</td></tr>
+<tr><td><strong>Fixed at 100% (bit-perfect)</strong></td><td>Hifinis never changes the level; use the DAC's own buttons or knob</td><td>Yes</td></tr>
+</tbody></table></div>
+<ul><li>Each DAC remembers its own volume, separately from the phone's.</li><li><strong>Ear safety</strong> (off by default): starts at a safe level after plugging in and caps sudden jumps. Turn it on under <strong>Settings → Audio &amp; output → DAC volume &amp; ear safety</strong>.</li><li>The phone's volume keys and the lock-screen − / + buttons control the DAC volume while Hifinis plays.</li></ul>
+<h3 id="usb-dacs-sample-rates-and-dsd">Sample rates and DSD</h3>
+<ul><li><strong>Resampling</strong> is off by default: every song plays at its own rate. If a DAC can't play a rate, the <strong>Resampler</strong> page decides what to convert it to.</li><li><strong>Rates above 96 kHz</strong> (on each DAC's page) allows 176.4 kHz, 192 kHz and higher.</li><li><strong>DSD:</strong> played natively when the DAC supports it, or as DoP (DSD over PCM) otherwise.</li><li><strong>Fade in after a rate change</strong> (under <em>USB DAC quirks</em>): a one-second fade when the rate changes between songs, so a DAC that re-locks never starts loud.</li></ul>
+<h3 id="usb-dacs-sharing-the-dac-with-other-apps">Sharing the DAC with other apps</h3>
+<p>In USB Exclusive, Hifinis holds the DAC; other apps and the ringtone can't use it.</p>
+<ul><li><strong>Release DAC</strong> (Outputs sheet, or the DAC's page) hands it back without unplugging. Press play to take it again.</li><li><strong>Release while paused</strong> gives the DAC back automatically a moment after you pause.</li><li><strong>Reconnect DAC</strong> lets go completely and claims it again — use it if another app grabbed the DAC and Hifinis went quiet.</li><li>During a call Hifinis releases the DAC by itself and takes it back afterwards.</li></ul>
+<h3 id="usb-dacs-your-devices">Your devices</h3>
+<p><strong>Settings → Your devices</strong> lists every DAC, Bluetooth device and headset you've used, each with its own settings (volume type, rates, profile). A device page also shows what it supports: sample rates, bit depth, hardware volume, native DSD, and whether Android offers a bit-perfect mixer for it. <strong>USB DAC console</strong> shows a live report for troubleshooting.</p>
+<h2 id="shaping-the-sound">7. Shaping the sound</h2>
+<p>The <strong>Sound</strong> tab holds the equalizer, effects and advanced settings. Anything that changes the sound makes the path no longer bit-perfect, and the <strong>✓ HIFINIS PURE</strong> badge goes away while it is on.</p>
+<h3 id="shaping-the-sound-equalizer">Equalizer</h3>
+<ol><li>Open the <strong>Sound</strong> tab → <strong>Equalizer</strong> and switch it <strong>on</strong>.</li><li><strong>Pick a preset:</strong> tap a card (Vocal Boost, Rock and so on), a chip (Normal, Classical, Dance…), or <strong>Browse all 120</strong>. <strong>Search</strong> finds presets by name. The list includes Hifinis' own full-range curves.</li><li><strong>Choose the bands:</strong> 5, 10, 15 or 31 bands, each ±15 dB.</li><li><strong>Shape it:</strong> drag the points on the curve. With <strong>Locked</strong> on, a tap opens one band's exact value instead, so you can't change bands by accident; <strong>Unlocked</strong> lets you drag freely.</li><li><strong>Save your own:</strong> <strong>My EQ</strong> keeps your curve — hold it to update it. <strong>Flat</strong> zeroes every band; <strong>Reset</strong> goes back to the preset.</li></ol>
+<p><strong>Parametric EQ</strong> gives you exact control: each filter has its own type (bell, shelf, pass and more), frequency, gain and Q. When it is on, it takes over from the graphic EQ.</p>
+<h3 id="shaping-the-sound-tone">Tone</h3>
+<p>The <strong>Tone</strong> card has four simple sliders — <strong>Bass, Vocals, Treble</strong> and <strong>Loudness</strong> — and a switch between <strong>Bit-perfect</strong> (nothing applied) and <strong>My sound</strong> (your tone and effects). Loudness follows your volume: it adds bass and treble as you turn down, so quiet listening still sounds full. <strong>Use my sound on this DAC</strong> remembers the choice per device.</p>
+<h3 id="shaping-the-sound-effects">Effects</h3>
+<div class="tbl"><table><thead><tr><th>Effect</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Enhance</td><td>Adds clarity and depth. Choose from 100 voicings</td></tr>
+<tr><td>Spatial</td><td>Widens the stereo image</td></tr>
+<tr><td>Crossfeed</td><td>Blends a little of each channel into the other, so headphones sound less "inside your head"</td></tr>
+<tr><td>Reverb</td><td>Adds room ambience</td></tr>
+<tr><td>ReplayGain</td><td>Evens out loudness between songs (<strong>Track</strong>) or keeps an album's own dynamics (<strong>Album</strong>). Peak protection stops clipping</td></tr>
+<tr><td>Speed</td><td>Plays faster or slower (⋮ on Now Playing)</td></tr>
+<tr><td>Crossfade, fades, gapless</td><td><strong>Settings → Audio &amp; output → Crossfade, fade and gapless</strong>. Gapless is on by default, so albums play track into track</td></tr>
+</tbody></table></div>
+<h3 id="shaping-the-sound-processor-rack">Processor Rack</h3>
+<p><strong>Settings → Processor rack</strong> (17 live processors) lets you build your own chain: add processors with <strong>Add processors</strong>, reorder them, and switch each on or off. You can also paste parametric-EQ text (for example a headphone correction) to turn it into rack filters.</p>
+<h3 id="shaping-the-sound-upscaler">Upscaler</h3>
+<p><strong>Settings → Upscaler</strong> restores some of the high frequencies that lossy files (MP3, AAC) lose. It finds where the file was cut and rebuilds the missing top octave. Choose how much comes back, or <strong>Off</strong> to leave the signal untouched.</p>
+<p><strong>If the sliders don't change anything:</strong> check that the Tone card is on <strong>My sound</strong>, and that <strong>Raw output</strong> (Bit-perfect settings) is off — Raw output skips all processing on purpose.</p>
+<h2 id="lyrics">8. Lyrics</h2>
+<p>Hifinis shows lyrics stored in the song file or in a matching <code>.lrc</code> file next to it, line by line in time with the music.</p>
+<ul><li><strong>See them:</strong> tap the lyrics button on Now Playing. Synced lyrics highlight the current line; tap a line to jump there.</li><li><strong>Floating lyrics:</strong> <strong>Settings → Lock screen &amp; widgets → Lyrics overlay</strong> — <em>Off</em>, <em>In the app</em> (a small pill on every screen), or <em>Over other apps</em> (needs Android's <em>Display over other apps</em> permission).</li><li><strong>Out of sync?</strong> On the lyrics screen, use <strong>Sync offset · this song</strong> to move all lines earlier or later. It is saved for that song only.</li></ul>
+<h3 id="lyrics-adding-lyrics-to-a-song">Adding lyrics to a song</h3>
+<p>Open the lyrics screen's menu (or <strong>⋮ → Edit tags → Lyrics</strong>):</p>
+<div class="tbl"><table><thead><tr><th>Option</th><th>Use it when</th></tr></thead><tbody>
+<tr><td>Find lyrics online</td><td>You've set a lyrics server; pick the right result and it is saved into the file</td></tr>
+<tr><td>Import from file</td><td>You have an <code>.lrc</code>, <code>.srt</code>, <code>.ttml</code> or <code>.txt</code> file for the song</td></tr>
+<tr><td>Paste lyrics</td><td>You copied lyrics from somewhere</td></tr>
+<tr><td>Search the web</td><td>You want to find them in a browser first</td></tr>
+<tr><td>Edit lyrics / Edit &amp; sync lines</td><td>You want to type them, or time each line while the song plays</td></tr>
+<tr><td>Remove imported lyrics</td><td>You want to go back to the file's own lyrics</td></tr>
+</tbody></table></div>
+<p><strong>Lyrics server:</strong> set it once under <strong>Settings → Lock screen &amp; widgets → Lyrics server</strong> (any LRCLIB-compatible address). Hifinis doesn't fetch lyrics from the internet unless you set one.</p>
+<h3 id="lyrics-timing-lines-yourself">Timing lines yourself</h3>
+<p>In <strong>Edit &amp; sync lines</strong>, play the song and tap each line as it is sung. You can also give a line an <strong>End</strong> time, so the highlight stops when the singing stops. Hifinis saves it as a standard LRC file other players can read.</p>
+<h2 id="sources-and-radio">9. Sources and radio</h2>
+<p>Besides the files on your phone, Hifinis plays from your own music server, cloud storage and free internet radio. Add them on Home → <strong>Sources</strong> or <strong>Settings → Sources &amp; streaming</strong>.</p>
+<div class="tbl"><table><thead><tr><th>Kind</th><th>Sources</th><th>You need</th></tr></thead><tbody>
+<tr><td>Music servers</td><td>Subsonic-compatible (Navidrome, Airsonic…), Jellyfin, Emby, Plex, LMS (Lyrion / Logitech Media Server), UPnP / DLNA</td><td>The server address, plus a user name and password (Plex: a token)</td></tr>
+<tr><td>Cloud</td><td>WebDAV / Nextcloud, S3-compatible, Google Drive, OneDrive, Dropbox</td><td>The address and sign-in, or the app key the service gives you</td></tr>
+<tr><td>Streams</td><td>RadioBrowser (free radio directory), Internet Archive, Custom stream URL, M3U / M3U8 playlist, Podcast RSS feed</td><td>Nothing for RadioBrowser and the Archive; a link for the others</td></tr>
+</tbody></table></div>
+<ol><li>Tap <strong>Add a source</strong> and pick its kind.</li><li>Fill in the fields (address, user name, password). <strong>Display name</strong> is just what Hifinis calls it.</li><li>Open the source to browse it like your library, and tap a song or station to play.</li></ol>
+<p><strong>Notes</strong></p>
+<ul><li>Passwords are stored on your phone only.</li><li>In <strong>USB Exclusive</strong>, a server or cloud song is downloaded to the phone's cache first and then played bit-perfect, so it can take a moment to start. The next song is fetched while the current one plays.</li><li><strong>Live radio</strong> works on every engine, including USB Exclusive, and shows the song title when the station sends it. A station that drops is reconnected by itself.</li><li><strong>Live radio on Home:</strong> a card with Tamil, Tamil · HD, Most listened and more. It is off by default — turn it on under <strong>Settings → Look and feel → Live radio on Home</strong>.</li></ul>
+<h3 id="sources-and-radio-casting-to-a-tv-or-speaker">Casting to a TV or speaker</h3>
+<p>Tap the <strong>Cast</strong> button at the top of Now Playing to send the music to a Chromecast, a Google/Nest speaker, or a DLNA TV or AV receiver on the same Wi-Fi. Playback, pause and skip stay on your phone; the sound comes from the other device.</p>
+<h2 id="look-and-feel">10. Look and feel</h2>
+<p>Almost everything you see can be changed under <strong>Settings → Look and feel</strong>, or from the small <strong>Make it yours</strong> tab on the screen edge.</p>
+<div class="tbl"><table><thead><tr><th>What to change</th><th>Setting</th></tr></thead><tbody>
+<tr><td>Light, dark or follow the phone</td><td><strong>Theme</strong> (also in Quick settings)</td></tr>
+<tr><td>The whole app's colours</td><td><strong>Theme</strong> skins, including pure black and pure white; <strong>Accent color</strong>; <strong>Icon colour</strong></td></tr>
+<tr><td>How Home looks</td><td><strong>Home style</strong> (restyles header, cards and shelves) and <strong>Home layout</strong> (how Songs, Albums, Artists and the rest are shown)</td></tr>
+<tr><td>What Home shows</td><td><strong>Audio Studio on Home</strong>, <strong>Live radio on Home</strong> (both off by default)</td></tr>
+<tr><td>The bottom bar</td><td><strong>Navigation buttons</strong> — choose and order its buttons</td></tr>
+<tr><td>Now Playing</td><td><strong>Now Playing layout</strong>, <strong>Cover style</strong>, <strong>Cover tint</strong>, <strong>Seek bar</strong>, <strong>Show whole cover</strong></td></tr>
+<tr><td>Sizes and spacing on every screen</td><td><strong>Make it yours</strong>: cover size and corners, controls and button sizes, title size, mini player size, card size, albums per row…</td></tr>
+<tr><td>3D or flat</td><td><strong>Depth</strong> — tilt, lift and motion, or plain 2D</td></tr>
+<tr><td>Text</td><td><strong>Font</strong>, <strong>Font size</strong> (text only) and <strong>App zoom</strong> (the whole interface)</td></tr>
+<tr><td>Lists</td><td><strong>Compact mode</strong>, <strong>View style</strong>, <strong>Group by</strong>, <strong>Sort by</strong>, <strong>Show track number</strong>, <strong>Show audio info</strong></td></tr>
+<tr><td>Covers and artists</td><td><strong>Album art quality</strong>, <strong>Artist images</strong></td></tr>
+<tr><td>A slower phone</td><td><strong>Performance mode</strong> — less motion and lighter covers</td></tr>
+</tbody></table></div>
+<ul><li><strong>Rotation:</strong> Hifinis follows the phone's auto-rotate setting.</li><li><strong>Language:</strong> <strong>Settings → Language</strong>, also for date and time format.</li></ul>
+<h2 id="audio-studio">11. Audio Studio</h2>
+<p>Audio Studio edits, cleans up and masters a song, or builds a multitrack project from recordings and files. Your original file is never changed: every export is a new file.</p>
+<p>Open it from <strong>Settings → Studio &amp; music world → Audio Studio</strong>, or from a song's <strong>⋮ → Audio Studio</strong>.</p>
+<h3 id="audio-studio-working-on-one-song">Working on one song</h3>
+<ol><li><strong>Analysis:</strong> Studio first measures loudness, peaks, noise and spectrum. <strong>Health check</strong> lists what it found, with one-tap fixes (<em>No faults found</em> means a clean master).</li><li><strong>Remaster presets</strong> set up a whole processing chain at once; <strong>Save preset</strong> keeps your own.</li><li><strong>Trim:</strong> drag the white handles on the timeline to set the start and end.</li><li><strong>Shape:</strong> EQ (drag a band, tap to set, double-tap to zero), stereo width, loudness and the other tools. A section that says <em>Off</em> is not applied until you change one of its controls.</li><li><strong>Export a copy:</strong> choose the file name, title tag, <strong>Format</strong> (FLAC, WAV, MP3) and <strong>Destination</strong> (internal Music, an SD card, a USB drive, or a folder you add). Keep the screen open until it finishes.</li></ol>
+<h3 id="audio-studio-audio-cutter">Audio cutter</h3>
+<p><strong>⋮ → Audio cutter</strong> on any song: zoom into the waveform, mark the part you want and save it. Where the format allows, the cut is lossless — the kept part is copied without re-encoding.</p>
+<h3 id="audio-studio-multitrack-projects">Multitrack projects</h3>
+<p>Tap <strong>New project</strong> on the Studio home. A project has tracks of clips on a timeline:</p>
+<div class="tbl"><table><thead><tr><th>Button</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Song / File</td><td>Adds a song from your library or any audio file as a clip</td></tr>
+<tr><td>Record</td><td>Records from the phone's microphone or a USB interface (choose input, sample rate, resolution, channels first)</td></tr>
+<tr><td>Takes</td><td>Keeps several recordings of the same part; pick the best</td></tr>
+<tr><td>Versions</td><td>Saves the whole project at a point you can go back to</td></tr>
+<tr><td>Track</td><td>Adds an empty track</td></tr>
+<tr><td>Mark</td><td>Adds a marker at the playhead</td></tr>
+</tbody></table></div>
+<ul><li><strong>Editing clips:</strong> tap a clip to select it, drag to move it, drag its edges to trim. <strong>Split</strong>, <strong>Cut</strong>, <strong>Copy</strong>, <strong>Paste</strong> and <strong>Duplicate</strong> are under the selected clip.</li><li><strong>Mixing:</strong> <strong>Mixer</strong> (level, pan, mute, solo), <strong>Track FX</strong> (effects per track), <strong>Master</strong> (the final bus) and <strong>Spectral</strong> (see and edit the frequencies).</li><li><strong>Play</strong> renders 30 seconds from the playhead with every effect applied, then plays it.</li><li><strong>Export</strong> mixes the whole project to FLAC, WAV or MP3.</li></ul>
+<p>While recording, <em>CLIPPED — lower the input</em> means the input is too loud; lower it and record again.</p>
+<h2 id="composer">12. Composer</h2>
+<p>The Composer writes music with built-in instruments — pianos, strings, winds, brass, Indian instruments, choirs, drums and synths — all played by Hifinis' own sound engine, with no samples to download.</p>
+<p>Open it from <strong>Settings → Studio &amp; music world → Composer</strong>.</p>
+<h3 id="composer-starting-a-score">Starting a score</h3>
+<ul><li><strong>Start from</strong> a template: <em>Empty</em>, <em>Film score</em>, <em>Indian classical</em>, <em>Pop song</em>, <em>Lo-fi beat</em> or <em>South Indian film song</em>. Every track and note stays editable.</li><li><strong>Your scores</strong> lists what you've made. Its <strong>⋮</strong> menu renames, duplicates, deletes or exports a score as a package to share.</li></ul>
+<h3 id="composer-the-score-screen-top-to-bottom">The score screen, top to bottom</h3>
+<ol><li><strong>Header:</strong> back, MIDI settings, undo / redo, <strong>Export</strong>.</li><li><strong>Transport:</strong> bar.beat position, tempo, time signature and key (tap to change), then back to start, <strong>record</strong>, <strong>play</strong>, <strong>loop</strong> and <strong>metronome</strong>.</li><li><strong>Arrangement:</strong> one row per instrument with <strong>M</strong> (mute) and <strong>S</strong> (solo); <strong>+</strong> adds a track. Tap a row to edit that track.</li><li><strong>Tabs:</strong> <strong>Notes</strong>, <strong>Score</strong>, <strong>Mixer</strong> and <strong>Song</strong>.</li><li><strong>Keyboard:</strong> play the selected track live; the arrows change octave. The other buttons open the hands-on instruments.</li></ol>
+<h3 id="composer-writing-notes-notes-tab">Writing notes (Notes tab)</h3>
+<div class="tbl"><table><thead><tr><th>To</th><th>Do this</th></tr></thead><tbody>
+<tr><td>Add a note</td><td>Tap an empty spot in the piano roll</td></tr>
+<tr><td>Hear / select a note</td><td>Tap it</td></tr>
+<tr><td>Move it</td><td>Drag it</td></tr>
+<tr><td>Make it longer or shorter</td><td>Drag its right end (you can grab just past the end; short notes resize from their right half)</td></tr>
+<tr><td>Delete it</td><td>Long-press it</td></tr>
+<tr><td>Scroll</td><td>Drag empty space</td></tr>
+<tr><td>Record</td><td>Press record and play the keyboard; notes land on the selected track</td></tr>
+</tbody></table></div>
+<ul><li><strong>Grid:</strong> 1/1 to 1/32 and triplets (1/8T). <strong>Zoom out / in</strong>, <strong>Quantize</strong>, <strong>Humanize</strong>, <strong>+1 / −1</strong> (transpose).</li><li><strong>Play</strong> style for new or selected notes: Normal, Legato, Staccato, Accent, Tremolo, Slide and more.</li><li><strong>Natural playing</strong> (on by default): phrasing, legato joins, a few milliseconds of human timing, and vibrato that grows on long notes.</li><li><strong>Lanes</strong> under the roll: <strong>Velocity</strong>, <strong>Dynamics</strong>, <strong>Vibrato</strong>, <strong>Volume</strong>, <strong>Pan</strong> and <strong>Reverb</strong> — draw them with a finger.</li><li><strong>Co-Producer</strong> writes a bass line, pads, an arpeggio, a counter-melody or drums from your chords. <strong>Hum notes</strong> turns your humming into notes.</li></ul>
+<h3 id="composer-hands-on-instruments">Hands-on instruments</h3>
+<p>The keyboard buttons open playable screens: Harmonium (pump the bellows), Violin (bow with a finger), Tabla, Winds (blow into the mic), Sitar / Veena, Yaazh and harps, Mridangam, Guitar (frets and strumming), Piano, Drum kit, Bells &amp; bars, and Choir &amp; voice. What you play can be recorded into the score.</p>
+<h3 id="composer-mixer-tab">Mixer tab</h3>
+<p>Each track has <strong>Level</strong>, <strong>Pan</strong> and <strong>Reverb</strong>, plus buttons to <strong>rename</strong> (pencil), move up, duplicate and delete. Tap the instrument name to change it. Two sections open below each track:</p>
+<ul><li><strong>Synth designer</strong> (not on drum tracks): design the track's own sound. Start from a preset — <em>Init saw, Soft pad, Warm keys, Pluck, Fat bass, Soft lead, Wobble, Air</em> — then shape two oscillators (saw, square, triangle, sine, noise), mix, octave, detune, unison and spread, noise, the filter (low-, band- or high-pass, cutoff, resonance, envelope amount, key tracking), the filter and amplitude envelopes, an LFO on the filter, vibrato, glide, mono, drive, width and level. Play the keyboard below to hear each change. <strong>Use the instrument again</strong> removes the design.</li><li><strong>EQ &amp; dynamics:</strong> a 4-band EQ (low shelf, two bells, high shelf — every band's frequency movable) and a compressor (threshold, ratio, attack, release, make-up). For example, cut 800–2500 Hz on a nasal lead, or use a long attack and short release to soften a pad.</li></ul>
+<p><strong>Master</strong> at the bottom sets the overall level and the hall size of the shared reverb.</p>
+<h3 id="composer-score-and-song-tabs">Score and Song tabs</h3>
+<ul><li><strong>Score:</strong> the music as sheet notation. Tap the staff to write notes; export a <strong>PDF</strong> full score, <strong>PDF parts</strong> for each player, or <strong>MusicXML</strong> for MuseScore and other notation apps.</li><li><strong>Song:</strong> tempo, time signature, key and named <strong>sections</strong> (intro, verse, chorus…).</li></ul>
+<h3 id="composer-midi">MIDI</h3>
+<p>Connect a USB or Bluetooth MIDI keyboard; the MIDI button in the header shows it. Notes, sustain pedal, pitch bend and mod wheel are recorded. <strong>MIDI-learn</strong> maps your controller's knobs to track volume, pan, reverb, tempo, transport and more. A track can also send its notes <strong>out</strong> to an external synth.</p>
+<h3 id="composer-exporting">Exporting</h3>
+<p><strong>Export</strong> offers: <strong>FLAC</strong>, <strong>WAV</strong> or <strong>MP3</strong> of the whole score; <strong>Stems</strong> (one WAV per instrument, all the same length, for a DAW); a <strong>MIDI file</strong>; or <strong>Open in Audio Studio</strong> to add vocals and master it.</p>
+<p><strong>Tip for slower phones:</strong> mute the tracks you aren't working on — muted tracks use no processing power, so playback stays smooth.</p>
+<h2 id="workshop-and-labs">13. Workshop and labs</h2>
+<p>The Workshop holds advanced tools that run entirely on the phone. Most end with <strong>Open in Studio</strong>, which turns the result into an Audio Studio project; your original files are never changed.</p>
+<p>Open it from <strong>Settings → Studio &amp; music world → Workshop</strong>.</p>
+<div class="tbl"><table><thead><tr><th>Tool</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Engine self-test</td><td>Plays test signals through your current output and proves, sample by sample, whether it is bit-perfect, switches rates cleanly, plays gaplessly, seeks and pauses exactly</td></tr>
+<tr><td>Sing</td><td>Karaoke with your own voice and a melody guide</td></tr>
+<tr><td>Stem Splitter</td><td>Separates a song into vocals, drums, bass and the rest, or makes a karaoke track</td></tr>
+<tr><td>Voice Changer</td><td>Pitch, character and robot effects, live or on songs</td></tr>
+<tr><td>Mastering Desk</td><td>A mastering report, comparison with reference tracks at matched loudness, and fixes</td></tr>
+<tr><td>Visual Studio</td><td>Beat-reactive visuals for a song, saved as an MP4 video or shown live</td></tr>
+<tr><td>Spectral Repair</td><td>Paint out clicks, hum, noise and stray tones on a spectrogram</td></tr>
+<tr><td>3D Space Studio</td><td>Place sounds around you: binaural headphone sound, 5.1 or 7.1</td></tr>
+<tr><td>Audio DNA</td><td>Finds a song's tempo, key, chords and form, and turns them into a new Composer score</td></tr>
+<tr><td>DSP Lab</td><td>Build your own audio processors from blocks, and try them in a sandbox</td></tr>
+<tr><td>Hearing calibration</td><td>Measures your ears with your headphones, for each device</td></tr>
+<tr><td>Audio Truth Lab</td><td>Are two files really the same? A null test and a blind ABX test</td></tr>
+<tr><td>Instrument Lab</td><td>Harmonics, attack, decay and body resonance of an instrument sound</td></tr>
+<tr><td>Validation suite</td><td>Checks codecs, meters, effects and outputs</td></tr>
+</tbody></table></div>
+<h3 id="workshop-and-labs-other-tools-settings-studio-music-world">Other tools (Settings → Studio &amp; music world)</h3>
+<ul><li><strong>Signal Lab:</strong> loudness (LUFS), an oscilloscope and the live signal path of what is playing.</li><li><strong>Library Lab:</strong> your collection's quality — Hi-Res, CD quality, lossy — a fake Hi-Res check, duplicates, loudness and ReplayGain, tempo and key.</li><li><strong>Engine Lab:</strong> <em>My Engine</em>, a copy of the Bit-perfect engine you can tune yourself (rate, resampler, buffers, dither). For experienced users.</li><li><strong>Music tools:</strong> a tuner and a metronome.</li></ul>
+<h3 id="workshop-and-labs-running-the-engine-self-test">Running the engine self-test</h3>
+<ol><li>Play nothing, and choose the output and engine you want to test.</li><li>Open <strong>Engine self-test</strong> and tap <strong>Run self-test</strong> (about a minute; quiet test noise plays).</li><li>Read the results: <strong>PASS</strong> all good, <strong>INFO</strong> a note, <strong>WARN</strong> usually fine, <strong>FAIL</strong> something went wrong.</li><li>Tap <strong>Share report</strong> to send it to us. The engine log comes with it.</li></ol>
+<p>On the phone speaker, wired headphones and Bluetooth, the test proves what Hifinis hands to Android; if Android converts the sound afterwards, the report says so.</p>
+<h2 id="extras">14. Extras</h2>
+<h3 id="extras-your-listening">Your listening</h3>
+<p><strong>Settings → Studio &amp; music world → Your listening</strong> shows your stats — top songs, artists and albums, and time listened — and <strong>Wrapped</strong>, a year-in-music story you can preview and share. <strong>Scrobbling</strong> sends what you play to ListenBrainz (Last.fm support is coming).</p>
+<h3 id="extras-music-alarm">Music alarm</h3>
+<p><strong>Music alarm</strong> wakes you with a song or playlist that fades in gently.</p>
+<h3 id="extras-car-mode">Car mode</h3>
+<p><strong>Settings → Headset, Bluetooth &amp; car → Car mode:</strong> a full-screen player with oversized buttons that keeps the screen awake. Turn on <strong>Enter on Bluetooth connect</strong> to open it automatically in the car, and <strong>Exit on disconnect</strong> to leave it when you get out.</p>
+<h3 id="extras-buttons-and-gestures">Buttons and gestures</h3>
+<p><strong>Settings → Shortcuts &amp; gestures</strong>:</p>
+<ul><li><strong>Swipe gestures</strong> on the cover: left / right changes the song, down opens the queue, up opens lyrics.</li><li><strong>Double tap</strong> on the cover and <strong>Long press action</strong> in lists: choose what they do.</li><li><strong>Shake to change song.</strong></li><li><strong>Custom earphone button:</strong> for one-button wired earphones, choose what 1, 2, 3 or 4 presses and press-and-hold do.</li></ul>
+<h3 id="extras-lock-screen-notification-and-widgets">Lock screen, notification and widgets</h3>
+<p><strong>Settings → Lock screen &amp; widgets</strong> and <strong>Notifications</strong>:</p>
+<ul><li><strong>Lock screen player</strong>, its style, and album art.</li><li><strong>Notification style</strong> → <strong>Volume</strong> puts − / + on the lock screen, which is handy for DACs without volume buttons. <strong>Detailed</strong> adds ±10 s seek buttons.</li><li><strong>Home-screen widget:</strong> add it from your launcher's widget list; <strong>Widget style</strong> and <strong>Widget theme</strong> change its look.</li><li>Synced lyrics can show on the widget, the lock screen, the notification and the mini player.</li></ul>
+<h3 id="extras-moving-to-a-new-phone-and-backups">Moving to a new phone, and backups</h3>
+<ul><li><strong>Settings → Backup &amp; restore → Back up now</strong> saves settings, playlists and favourites to a file; <strong>Restore backup</strong> brings them back. <strong>Reset all settings</strong> returns to defaults and keeps your music folders.</li><li><strong>Export Hifinis settings &amp; effects</strong> (Headset, Bluetooth &amp; car page) makes one file with settings, EQ and sound profiles, effects, the Processor Rack, every device's settings, playlists and favourites. <strong>Import settings &amp; effects</strong> restores it on this phone or a new one.</li><li><strong>Export current sound / Import a sound:</strong> share just what's applied right now (EQ, effects, rack, upscaler) as one small file.</li></ul>
+<h2 id="troubleshooting-and-reporting-a-problem">15. Troubleshooting and reporting a problem</h2>
+<p>Most problems have a quick fix below. If yours doesn't, run the engine self-test and share the report with us — it tells us exactly what happened.</p>
+<div class="tbl"><table><thead><tr><th>Problem</th><th>Try this</th></tr></thead><tbody>
+<tr><td>No sound from the USB DAC</td><td>Check <strong>USB DAC</strong> is selected on Home and that Hifinis was allowed to use the device. Tap <strong>Reconnect DAC</strong>. Close other music apps that may hold the DAC. Still nothing? Switch to <strong>Hi-Res</strong></td></tr>
+<tr><td>DAC's own buttons or screen stop responding</td><td>Tap <strong>Release DAC</strong>, unplug, plug back in. Use <strong>Hi-Res</strong> with that DAC and send us a log</td></tr>
+<tr><td>Sudden loud sound on a DAC</td><td>Set <strong>Volume type</strong> to <strong>Hardware</strong> and turn on <strong>Ear safety</strong>. Keep the app updated — DACs that need it are now fully re-opened on a rate change</td></tr>
+<tr><td>Volume keys don't change the DAC level</td><td>Check the DAC's <strong>Volume type</strong>. With <strong>Fixed at 100%</strong>, use the DAC's own buttons</td></tr>
+<tr><td>Other apps or the ringtone are silent</td><td>In USB Exclusive, Hifinis holds the DAC. Tap <strong>Release DAC</strong>, or turn on <strong>Release while paused</strong></td></tr>
+<tr><td>A short burst of sound when skipping while paused</td><td>Fixed in 2.5.11 — update the app</td></tr>
+<tr><td><strong>✓ HIFINIS PURE</strong> badge missing</td><td>Something changes the sound: EQ, Tone, effects, software volume below 100%, or a rate the DAC can't play. Turn them off, or use hardware volume</td></tr>
+<tr><td>EQ or effects do nothing</td><td>Set the Tone card to <strong>My sound</strong>, and turn off <strong>Raw output</strong></td></tr>
+<tr><td>Constant noise from a USB headset in Exclusive</td><td>Update to 2.5.11. If it continues, use <strong>Hi-Res</strong> and send us a self-test report</td></tr>
+<tr><td>Songs are missing from the library</td><td><strong>Settings → Library → Music folders</strong>: add their folder. Then <strong>Re-read tags from your music folders</strong></td></tr>
+<tr><td>Lyrics don't show or are out of time</td><td>Add them (<em>Lyrics</em> section), then use <strong>Sync offset · this song</strong></td></tr>
+<tr><td>Composer playback stutters</td><td>Mute the tracks you aren't working on; turn on <strong>Performance mode</strong></td></tr>
+<tr><td>Music stops when you open another app</td><td><strong>Settings → Audio &amp; output → Audio focus</strong>: turn on <strong>Resume if the other app stays quiet</strong></td></tr>
+<tr><td>Playback stops with the screen off</td><td>Allow Hifinis to run in the background (Android battery settings → <em>Unrestricted</em>) and turn on <strong>Allow background playback</strong></td></tr>
+</tbody></table></div>
+<h3 id="troubleshooting-and-reporting-a-problem-reporting-a-problem">Reporting a problem</h3>
+<ol><li>Reproduce the problem once, if you can.</li><li>Open <strong>Workshop → Engine self-test</strong>, run it, and tap <strong>Share report</strong>. The report and the engine log are included in the shared message and as an attached file — please send the file too.</li><li>Tell us your phone, your DAC or headphones, which engine you used (Android, Hi-Res, USB Exclusive), and what you heard.</li><li>Send it in the Curvio Community Telegram group, or through Hifinis' Google Play page.</li></ol>
+<p>Send the report <strong>before</strong> restarting the phone or the DAC — a restart clears the log we need.</p>
+<p class="back"><a href="#top" onclick="window.scrollTo(0,0);return false;">↑ Back to top</a> · <a href="./">Hifinis home</a></p>
+</main>
+</div>
+<footer>© 2026 Curvio Studio · <a href="./">Home</a> · <a href="privacy.html">Privacy policy</a></footer>
+</body>
+</html>
