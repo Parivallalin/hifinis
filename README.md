@@ -5,7 +5,7 @@ It plays your files the way they were recorded — bit-perfect to your USB DAC, 
 31-band EQ, 120 presets, FLAC / ALAC / DSD, gapless, synced lyrics and a built-in Audio Studio.
 No account, no ads.
 
-**[▶ Hifinis on Google Play](https://play.google.com/store/apps/details?id=com.curvio.hifinis)** · Android 8+ · 14-day free trial, then a one-time purchase
+**[▶ Hifinis on Google Play](https://play.google.com/store/apps/details?id=com.curvio.hifinis)** (testing — [join here](https://groups.google.com/g/hifinis-testers)) · Android 8+
 
 <p>
 <img src="screenshots/01-nowplaying.webp" width="180" alt="Bit-perfect to your DAC">
@@ -22,7 +22,7 @@ No account, no ads.
 🌐 Website: https://parivallalin.github.io/hifinis/
 🔒 Privacy policy: https://parivallalin.github.io/hifinis/privacy.html
 ▶ Google Play: https://play.google.com/store/apps/details?id=com.curvio.hifinis  ·  📣 Telegram: https://t.me/curviostudio
-📱 Google Play: 14-day free trial, then a one-time purchase · no subscription, no ads
+📱 Google Play: in closed testing — join via our Telegram group
 
 ## Features
 
