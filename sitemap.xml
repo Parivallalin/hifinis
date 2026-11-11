@@ -2,5 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://parivallalin.github.io/hifinis/</loc><lastmod>2026-10-14</lastmod><priority>1.0</priority></url>
   <url><loc>https://parivallalin.github.io/hifinis/guide.html</loc><lastmod>2026-11-02</lastmod><priority>0.8</priority></url>
-  <url><loc>https://parivallalin.github.io/hifinis/privacy.html</loc><lastmod>2026-10-14</lastmod><priority>0.5</priority></url>
+  <url><loc>https://parivallalin.github.io/hifinis/privacy.html</loc><lastmod>2026-11-11</lastmod><priority>0.5</priority></url>
+  <url><loc>https://parivallalin.github.io/hifinis/terms.html</loc><lastmod>2026-11-11</lastmod><priority>0.4</priority></url>
+  <url><loc>https://parivallalin.github.io/hifinis/refund.html</loc><lastmod>2026-11-11</lastmod><priority>0.4</priority></url>
+  <url><loc>https://parivallalin.github.io/hifinis/shipping.html</loc><lastmod>2026-11-11</lastmod><priority>0.4</priority></url>
+  <url><loc>https://parivallalin.github.io/hifinis/contact.html</loc><lastmod>2026-11-11</lastmod><priority>0.4</priority></url>
 </urlset>
