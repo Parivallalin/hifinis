@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support Hifinis</title>
+<meta name="description" content="Like Hifinis? Support its development with a small tip by UPI, card or netbanking. Optional, and it unlocks nothing: a thank-you from you to us.">
+<link rel="canonical" href="https://parivallalin.github.io/hifinis/support.html">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#0b0d14">
+<style>
+  :root {
+    --bg: #0b0d14; --bg2: #121624; --card: #161b2b; --line: #262c40;
+    --fg: #eef0f8; --muted: #a3a9c2; --accent: #6f8bff; --accent2: #b36bff; --cyan: #3fd2f5;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f6f6fb; --bg2: #ffffff; --card: #ffffff; --line: #e3e4ee;
+      --fg: #161826; --muted: #5a5f78; --accent: #3b5bdb; --accent2: #8a3ffc; --cyan: #0b8fb3;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.6;
+         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  header.top { border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+  header.top img { width: 32px; height: 32px; border-radius: 9px; }
+  header.top a.home { display: flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; font-weight: 700; }
+  h1 { font-size: clamp(1.7em, 5vw, 2.4em); line-height: 1.2; margin: 1.2em 0 .3em;
+       background: linear-gradient(90deg, var(--cyan), var(--accent), var(--accent2));
+       -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { color: var(--muted); font-size: 1.08em; margin: 0 0 1.6em; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 24px;
+          display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: center; }
+  @media (max-width: 640px) { .card { grid-template-columns: 1fr; text-align: center; } }
+  .qr { background: #fff; border-radius: 16px; padding: 12px; width: 220px; max-width: 100%; margin: 0 auto; }
+  .qr img { display: block; width: 100%; height: auto; }
+  .card h2 { margin: 0 0 .3em; font-size: 1.2em; }
+  .card p { margin: 0 0 1em; color: var(--muted); }
+  .pay { display: inline-block; padding: 12px 26px; border-radius: 999px; color: #fff; font-weight: 700;
+         text-decoration: none; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .pay:hover { filter: brightness(1.08); }
+  .small { font-size: .92em; color: var(--muted); }
+  ul.points { padding-left: 1.2em; color: var(--muted); }
+  ul.points li { margin: .35em 0; }
+  h3 { margin-top: 2em; font-size: 1.05em; }
+  footer { margin-top: 3em; padding: 1.2em 0 3em; border-top: 1px solid var(--line); font-size: .92em; color: var(--muted); }
+  footer a { margin-right: 14px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap"><a class="home" href="./"><img src="icon-192.png" alt="">Hifinis</a></div>
+</header>
+
+<main class="wrap">
+  <h1>Support Hifinis</h1>
+  <p class="lead">Hifinis is built by one developer, with its own audio engine, made from scratch.
+    If it makes your music sound better and you'd like to say thanks, any amount helps keep it growing.</p>
+
+  <div class="card">
+    <div class="qr"><img src="support-qr.png" alt="QR code that opens the Hifinis support payment page" width="440" height="440"></div>
+    <div>
+      <h2>Scan with your phone camera</h2>
+      <p>The code opens our secure payment page. Type any amount you like, then pay with Google Pay, PhonePe,
+        Paytm or any UPI app, a card or netbanking. On a phone already? Just tap the button.</p>
+      <a class="pay" href="https://razorpay.me/@parivallal2052" rel="noopener">Pay with card, UPI or netbanking</a>
+      <p class="small" style="margin-top:.8em">Payments are handled securely by Razorpay.</p>
+    </div>
+  </div>
+
+  <h3>Good to know</h3>
+  <ul class="points">
+    <li>Completely optional. Support doesn't unlock anything in the app; it is a thank-you from you to us.</li>
+    <li>The Hifinis unlock is bought only inside the app, through Google Play.</li>
+    <li>Razorpay sends your receipt by email. Questions about a payment:
+      <a href="contact.html">contact us</a> with the payment ID.</li>
+  </ul>
+
+  <p>Thank you for listening with Hifinis. 🎧</p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Curvio Studio · <a href="./">Home</a><a href="guide.html">User guide</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="contact.html">Contact</a></div>
+</footer>
+</body>
+</html>
