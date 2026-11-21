@@ -206,6 +206,49 @@
   footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; }
   footer a { color: var(--muted); }
 
+
+  /* Feature showcase: one screenshot with its explanation, alternating sides (owner 2026-11-21) */
+  .showcase { padding-top: 24px; overflow-x: clip; }
+  html { overflow-x: clip; }
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 330px); gap: clamp(32px, 7vw, 110px);
+             align-items: center; padding: clamp(40px, 6vw, 84px) 0; }
+  .feature.flip { grid-template-columns: minmax(240px, 330px) minmax(0, 1fr); }
+  .feature.flip .shot { order: -1; }
+  .feature .copy h2 { font-size: clamp(1.8em, 3.8vw, 2.7em); line-height: 1.1; letter-spacing: -0.03em; margin: 4px 0 14px; font-weight: 800; }
+  .feature .copy p { color: var(--muted); font-size: 1.12em; max-width: 600px; margin: 0 0 20px; }
+  .feature ul.points { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; max-width: 600px; }
+  .feature ul.points li { position: relative; padding: 12px 16px 12px 46px; background: var(--card); border: 1px solid var(--line);
+                          border-radius: 14px; box-shadow: var(--shadow); font-weight: 550; }
+  .feature ul.points li::before { content: "\2713"; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+                                  width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .78em; color: #fff;
+                                  background: linear-gradient(135deg, var(--cyan), var(--accent2)); }
+  .feature .shot { position: relative; justify-self: center; width: 100%; max-width: 330px; }
+  .feature .shot::before { content: ""; position: absolute; inset: 10% -14%; border-radius: 50%; z-index: 0; filter: blur(60px); opacity: .45;
+                           background: radial-gradient(circle, var(--accent2), var(--cyan) 60%, transparent 75%); }
+  :root[data-theme="dark"] .feature .shot::before { opacity: .28; }
+  .feature .shot img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: 36px;
+                       border: 8px solid #141729; box-shadow: 0 30px 70px var(--glow), 0 8px 24px rgba(0,0,0,.18);
+                       transition: transform .4s; }
+  .feature .shot img:hover { transform: translateY(-6px); }
+  @media (max-width: 860px) {
+    .feature, .feature.flip { grid-template-columns: 1fr; gap: 28px; text-align: left; }
+    .feature.flip .shot { order: 0; }
+    .feature .shot { max-width: 280px; }
+  }
+
+  /* Why people switch */
+  .why { list-style: none; padding: 0; margin: 26px auto 0; display: grid; gap: 10px; max-width: 1100px;
+         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .why li { text-align: center; padding: 14px 12px; border-radius: 16px; background: var(--card); border: 1px solid var(--line);
+            box-shadow: var(--shadow); font-size: .95em; color: var(--muted); }
+  .why b { display: block; color: var(--fg); font-size: 1.08em; margin-bottom: 2px; }
+  /* Reviews */
+  .quotes { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .quote { margin: 0; padding: 24px 24px 20px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+           display: flex; flex-direction: column; gap: 12px; }
+  .quote .stars { color: #f5b301; letter-spacing: 2px; font-size: 1.05em; }
+  .quote blockquote { margin: 0; font-size: 1.04em; line-height: 1.6; flex: 1; }
+  .quote figcaption { color: var(--muted); font-weight: 650; font-size: .92em; }
   /* Fade-in on scroll (off for people who turn motion off) */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -268,21 +311,127 @@
   </div>
 </div>
 
-<div class="shots" aria-label="Screenshots">
-  <figure><img src="screenshots/01-nowplaying.webp" alt="Hifinis Now Playing: 96 kHz WAV, USB Exclusive, bit-perfect to a JadeAudio JA11 DAC, Hi-Res badge" loading="lazy" width="540" height="1127"><figcaption>Bit-perfect to your DAC</figcaption></figure>
-  <figure><img src="screenshots/02-signal-path.webp" alt="Hifinis signal path: file, engine, processing and DAC all marked clean — bit-perfect" loading="lazy" width="540" height="1127"><figcaption>See every stage, live</figcaption></figure>
-  <figure><img src="screenshots/03-eq.webp" alt="Hifinis 10-band equalizer with the Harman Target preset and live spectrum" loading="lazy" width="540" height="1127"><figcaption>EQ · 5 to 31 bands · 120 presets</figcaption></figure>
-  <figure><img src="screenshots/04-home.webp" alt="Hifinis Home in the Frosted glass design: songs, albums, artists, playlists, favourites" loading="lazy" width="540" height="1127"><figcaption>Your library, your way</figcaption></figure>
-  <figure><img src="screenshots/05-lyrics.webp" alt="Hifinis synced lyrics in big type with Translate, Sync and Lock screen" loading="lazy" width="540" height="1127"><figcaption>Synced lyrics, big and clear</figcaption></figure>
-  <figure><img src="screenshots/06-outputs.webp" alt="Hifinis Outputs: USB DAC, phone speaker, Cast and sharing with other apps" loading="lazy" width="540" height="1127"><figcaption>One app, every device</figcaption></figure>
-  <figure><img src="screenshots/07-studio.webp" alt="Hifinis Audio Studio: waveform, A/B compare, loudness and true-peak meters, remaster presets" loading="lazy" width="540" height="1127"><figcaption>A full audio studio</figcaption></figure>
-  <figure><img src="screenshots/08-designs.webp" alt="Hifinis Home in the dark Cinema design" loading="lazy" width="540" height="1127"><figcaption>29 designs. Make it yours</figcaption></figure>
-</div>
 
+<div class="wrap reveal">
+  <ul class="why" aria-label="Why people switch to Hifinis">
+    <li><b>No ads</b>Not one, ever</li>
+    <li><b>No account</b>Nothing to sign up for</li>
+    <li><b>No subscription</b>Pay once, never monthly</li>
+    <li><b>Every feature</b>On for 14 days</li>
+    <li><b>One purchase</b>Yours forever</li>
+    <li><b>Private</b>Your music never leaves your phone</li>
+  </ul>
+</div>
+<section class="showcase wrap" aria-label="What Hifinis does">
+  <div class="feature reveal">
+    <div class="copy">
+      <span class="label">Bit-perfect sound</span>
+      <h2>Bit-perfect, straight to your DAC.</h2>
+      <p>Hifinis plays every song exactly as it was recorded. Exclusive USB talks to your DAC directly, past Android's mixer and its forced resampling, so nothing is changed on the way to your ears.</p>
+      <ul class="points">
+        <li>Each song at its own sample rate, up to 384 kHz / 32-bit</li>
+        <li>Native DSD or DoP on DACs that support it</li>
+        <li>Separate DAC volume, hardware volume and a safe start level for IEMs</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/01-nowplaying.webp" alt="Hifinis Now Playing: 96 kHz WAV played bit-perfect over USB Exclusive to a USB DAC" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature flip reveal">
+    <div class="copy">
+      <span class="label">Signal path</span>
+      <h2>See every stage. Prove it.</h2>
+      <p>Don't just trust a badge. The signal path shows each step from the file to your ears, live, and marks every stage as clean or as changing the sound.</p>
+      <ul class="points">
+        <li>File, engine, processing, rate, output and DAC, all in one view</li>
+        <li>Built-in engine self-test that proves the output is bit-exact</li>
+        <li>Live DAC report: real sample rates, bit depth and DSD support</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/02-signal-path.webp" alt="Hifinis signal path: file, engine, processing and DAC all marked clean" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature reveal">
+    <div class="copy">
+      <span class="label">Equalizer</span>
+      <h2>An equalizer like no other.</h2>
+      <p>Shape the sound with a graphic or parametric EQ that works on every output, including bit-perfect USB, with a live spectrum behind the curve while you tune.</p>
+      <ul class="points">
+        <li>Graphic EQ in 5, 10, 15 or 31 bands, ±15 dB</li>
+        <li>Parametric EQ with up to 31 filters: peak, shelf, pass and notch</li>
+        <li>120 presets, including the Harman target and 20 Hifinis originals</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/03-eq.webp" alt="Hifinis 10-band equalizer with the Harman Target preset and a live spectrum" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature flip reveal">
+    <div class="copy">
+      <span class="label">Outputs</span>
+      <h2>Every output at once.</h2>
+      <p>Your DAC, Bluetooth headphones and the phone speaker can all play together, and each one remembers its own EQ, effects and volume.</p>
+      <ul class="points">
+        <li>Play on several outputs at the same time, each with its own level</li>
+        <li>Cast to Chromecast and Google Cast speakers</li>
+        <li>Pauses when you unplug and never jumps to the speaker</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/06-outputs.webp" alt="Hifinis Outputs: USB DAC, phone speaker, Cast and sharing with other apps" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature reveal">
+    <div class="copy">
+      <span class="label">Lyrics</span>
+      <h2>Lyrics you can actually read.</h2>
+      <p>Synced lyrics in big, clear type that follow the song line by line. Embedded in your files, from .lrc files, or found online when you allow it.</p>
+      <ul class="points">
+        <li>Translate lyrics on your phone, offline after setup</li>
+        <li>Tap-to-sync to fix timing, and save it into the song file</li>
+        <li>Lyrics on the lock screen, the widget and the mini player</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/05-lyrics.webp" alt="Hifinis synced lyrics in big type with Translate and Sync" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature flip reveal">
+    <div class="copy">
+      <span class="label">Library</span>
+      <h2>Your library, your way.</h2>
+      <p>Hifinis reads only the folders you choose and keeps your collection tidy, from songs and albums to composers and years.</p>
+      <ul class="points">
+        <li>Sort and filter by format, year, folder, length and more</li>
+        <li>Tag editor with artwork and safe saving</li>
+        <li>Playlists, smart playlists and favourites, with m3u, pls, xspf and wpl import</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/04-home.webp" alt="Hifinis Home in the Frosted glass design: songs, albums, artists and playlists" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature reveal">
+    <div class="copy">
+      <span class="label">Audio Studio</span>
+      <h2>A complete audio studio.</h2>
+      <p>Remaster a song, split it into stems, sing along in karaoke or write your own music. Your original files are never changed: every edit is saved as a new file.</p>
+      <ul class="points">
+        <li>Loudness (LUFS), true peak, A/B compare and restore tools</li>
+        <li>Stem splitter, karaoke mode and voice changer</li>
+        <li>Composer with 95 playable instruments, piano roll and score</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/07-studio.webp" alt="Hifinis Audio Studio: waveform, A/B compare, loudness and true-peak meters" loading="lazy" width="540" height="1127"></div>
+  </div>
+  <div class="feature flip reveal">
+    <div class="copy">
+      <span class="label">Make it yours</span>
+      <h2>Make it yours.</h2>
+      <p>Pick one of 29 complete Home designs, dozens of colour skins in light, dark or pure black, or let the app take its colours from the album art.</p>
+      <ul class="points">
+        <li>29 Home designs: frosted glass, cinema, neon, 3D tilt and more</li>
+        <li>Design your own player: move, resize and hide every control</li>
+        <li>Widgets, lock-screen controls and a car mode</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="screenshots/08-designs.webp" alt="Hifinis Home in the dark Cinema design" loading="lazy" width="540" height="1127"></div>
+  </div>
+</section>
 <main class="wrap">
 
 <section id="features" class="reveal">
-  <span class="label">Features</span>
+  <span class="label">And much more</span>
   <h2>Everything Hifinis does</h2>
   <p class="sub">Built for people who care how their music sounds — and simple enough for everyone else.</p>
   <div class="grid">
@@ -395,7 +544,17 @@
         <li>Dozens of colour skins, light, dark and pure-black OLED</li>
         <li>Or let the whole app take its colours from the album art</li>
         <li>Editable bottom dock, app zoom and font size</li>
-        <li>Home-screen widgets, lock-screen and headset controls, car mode</li>
+        <li>Design your own player: move, resize and hide every control</li>
+        <li>Home-screen widgets, lock-screen and headset controls</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="ic">&#128663;</span>In the car &amp; every day</h3>
+      <ul>
+        <li>Android Auto: albums, artists, playlists and songs on your car screen</li>
+        <li>Car mode with a big cover, live lyrics and large buttons</li>
+        <li>Audiobook mode: resumes each book where you stopped, with chapters</li>
+        <li>Music alarm and sleep timer</li>
       </ul>
     </div>
     <div class="card">
@@ -439,6 +598,23 @@
   <div class="formats">
     <span>FLAC</span><span>ALAC</span><span>WAV</span><span>AIFF</span><span>APE</span><span>DSF / DFF (DSD)</span>
     <span>MP3</span><span>AAC / M4A</span><span>Ogg Vorbis</span><span>Opus</span><span>WMA</span><span>MKA</span>
+  </div>
+</section>
+
+<section id="reviews" class="reveal">
+  <span class="label">Loved by listeners</span>
+  <h2>What people say on Google Play</h2>
+  <p class="sub">Real reviews from people who use Hifinis every day.</p>
+  <div class="quotes">
+    <figure class="quote"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>Lots of great features, super good for Hi-Res music, IEMs, and USB DACs. bit-perfect USB exclusive mode works great without android resampling. love how it remembers different EQ and volume settings for each earphone I plug in. synced lyrics and android auto work smoothly too. definitely my daily music player now.</blockquote>
+      <figcaption>Ly · Google Play</figcaption></figure>
+    <figure class="quote"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>One of the Best Apps. period. Can take calls without compromising USB Exclusive. Checkout for Amazing features it has. Too many to mention.</blockquote>
+      <figcaption>Rajesh · Google Play</figcaption></figure>
+    <figure class="quote"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>This music player is excellent due to its impressive features, bit-perfect server playback, and extensive customization options that meet all musical requirements.</blockquote>
+      <figcaption>Arafath · Google Play</figcaption></figure>
   </div>
 </section>
 
