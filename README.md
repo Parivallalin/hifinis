@@ -19,8 +19,8 @@ No account, no ads.
 <img src="screenshots/08-designs.webp" width="180" alt="29 designs. Make it yours">
 </p>
 
-🌐 Website: https://parivallalin.github.io/hifinis/
-🔒 Privacy policy: https://parivallalin.github.io/hifinis/privacy.html
+🌐 Website: https://hifinis.com/
+🔒 Privacy policy: https://hifinis.com/privacy.html
 ▶ Google Play: https://play.google.com/store/apps/details?id=com.curvio.hifinis  ·  📣 Telegram: https://t.me/curviostudio
 
 ## Features
