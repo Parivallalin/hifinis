@@ -7,18 +7,13 @@
 <meta name="description" content="Like Hifinis? Support its development with a small tip by UPI, card or netbanking. Optional, and it unlocks nothing: a thank-you from you to us.">
 <link rel="canonical" href="https://hifinis.com/support.html">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="theme-color" content="#0b0d14">
+<meta name="theme-color" content="#f7f7fb">
+<script src="theme.js"></script>
 <style>
-  :root {
-    --bg: #0b0d14; --bg2: #121624; --card: #161b2b; --line: #262c40;
-    --fg: #eef0f8; --muted: #a3a9c2; --accent: #6f8bff; --accent2: #b36bff; --cyan: #3fd2f5;
-  }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      --bg: #f6f6fb; --bg2: #ffffff; --card: #ffffff; --line: #e3e4ee;
-      --fg: #161826; --muted: #5a5f78; --accent: #3b5bdb; --accent2: #8a3ffc; --cyan: #0b8fb3;
-    }
-  }
+  :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9; }
+  :root[data-theme="dark"] { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5; }
+  .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  header.top nav { align-items: center; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.6;
          font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }

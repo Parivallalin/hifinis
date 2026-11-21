@@ -7,9 +7,12 @@
 <meta name="description" content="How to use Hifinis: library, Now Playing, audio engines, USB DACs, EQ and effects, lyrics, sources, Audio Studio, Composer and Synth designer, Workshop, troubleshooting.">
 <link rel="icon" href="favicon.png">
 <link rel="canonical" href="https://hifinis.com/guide.html">
+<script src="theme.js"></script>
 <style>
-  :root { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5; }
-  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg:#f6f6fb; --bg2:#ffffff; --card:#ffffff; --line:#e3e4ee; --fg:#161826; --muted:#5a5f78; --accent:#3b5bdb; --accent2:#8a3ffc; --cyan:#0b8fb3; } }
+  :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9; }
+  :root[data-theme="dark"] { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5; }
+  .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  header.top nav { align-items: center; }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin:0; background:var(--bg); color:var(--fg); line-height:1.65; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
