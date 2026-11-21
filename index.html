@@ -212,19 +212,21 @@
   /* Feature showcase: one screenshot with its explanation, alternating sides (owner 2026-11-21) */
   .showcase { padding-top: 24px; overflow-x: clip; }
   html { overflow-x: clip; }
-  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 330px); gap: clamp(32px, 7vw, 110px);
-             align-items: center; padding: clamp(40px, 6vw, 84px) 0; }
-  .feature.flip { grid-template-columns: minmax(240px, 330px) minmax(0, 1fr); }
+  /* Tight pairs (owner 2026-11-21: "big empty gaps"): smaller phone, half the padding, closer columns */
+  .showcase { max-width: 1080px; }
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 265px); gap: clamp(28px, 4vw, 56px);
+             align-items: center; padding: clamp(18px, 2.6vw, 34px) 0; }
+  .feature.flip { grid-template-columns: minmax(220px, 265px) minmax(0, 1fr); }
   .feature.flip .shot { order: -1; }
-  .feature .copy h2 { font-size: clamp(1.8em, 3.8vw, 2.7em); line-height: 1.1; letter-spacing: -0.03em; margin: 4px 0 14px; font-weight: 800; }
-  .feature .copy p { color: var(--muted); font-size: 1.12em; max-width: 600px; margin: 0 0 20px; }
-  .feature ul.points { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; max-width: 600px; }
+  .feature .copy h2 { font-size: clamp(1.8em, 3.8vw, 2.8em); line-height: 1.1; letter-spacing: -0.03em; margin: 4px 0 14px; font-weight: 800; }
+  .feature .copy p { color: var(--muted); font-size: 1.16em; margin: 0 0 20px; }
+  .feature ul.points { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   .feature ul.points li { position: relative; padding: 12px 16px 12px 46px; background: var(--card); border: 1px solid var(--line);
                           border-radius: 14px; box-shadow: var(--shadow); font-weight: 550; }
   .feature ul.points li::before { content: "\2713"; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
                                   width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .78em; color: #fff;
                                   background: linear-gradient(135deg, var(--cyan), var(--accent2)); }
-  .feature .shot { position: relative; justify-self: center; width: 100%; max-width: 330px; }
+  .feature .shot { position: relative; justify-self: center; width: 100%; max-width: 265px; }
   .feature .shot::before { content: ""; position: absolute; inset: 10% -14%; border-radius: 50%; z-index: 0; filter: blur(60px); opacity: .45;
                            background: radial-gradient(circle, var(--accent2), var(--cyan) 60%, transparent 75%); }
   :root[data-theme="dark"] .feature .shot::before { opacity: .28; }
@@ -235,7 +237,7 @@
   @media (max-width: 860px) {
     .feature, .feature.flip { grid-template-columns: 1fr; gap: 28px; text-align: left; }
     .feature.flip .shot { order: 0; }
-    .feature .shot { max-width: 280px; }
+    .feature .shot { max-width: 250px; }
   }
 
   /* Why people switch */
@@ -387,7 +389,7 @@
     <div class="copy">
       <span class="label">Lyrics</span>
       <h2>Lyrics you can actually read.</h2>
-      <p>Synced lyrics in big, clear type that follow the song line by line. Embedded in your files, from .lrc files, or found online when you allow it.</p>
+      <p>Synced lyrics in big, clear type that follow the song line by line. Embedded in your files, from .lrc files, or from a lyrics server you choose to add.</p>
       <ul class="points">
         <li>Translate lyrics on your phone, offline after setup</li>
         <li>Tap-to-sync to fix timing, and save it into the song file</li>
@@ -507,7 +509,7 @@
     <div class="card">
       <h3><span class="ic">🎤</span>Lyrics you can read</h3>
       <ul>
-        <li>Embedded, .lrc / .srt / .ttml, or found online (LRCLIB) — optional</li>
+        <li>Embedded, .lrc / .srt / .ttml, or from a lyrics server you add (optional)</li>
         <li>Big-type, line-by-line synced view</li>
         <li>On-device translation into your language — works offline after setup</li>
         <li>Tap-to-sync to fix timing, pick the right lyrics when a lookup is wrong</li>
