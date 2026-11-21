@@ -16,6 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="theme.js"></script>
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hifinis">
 <meta property="og:title" content="Hifinis — Hi-Res Music Player for Android">
@@ -121,7 +123,7 @@
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .85em; font-weight: 650; color: var(--accent);
              background: color-mix(in srgb, var(--accent) 10%, var(--bg2)); border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
              padding: 6px 12px; border-radius: 999px; }
-  .eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+  
   .hero h1 { font-size: clamp(2.3em, 5.6vw, 3.7em); line-height: 1.06; margin: 18px 0 14px; letter-spacing: -0.035em; font-weight: 800; }
   .hero p.lead { font-size: 1.18em; color: var(--muted); max-width: 680px; margin: 0 0 26px; }
   @media (max-width: 900px) { .hero p.lead { margin: 0 auto 26px; } }
@@ -276,9 +278,15 @@
 
 <div class="hero">
   <div class="blob a"></div><div class="blob b"></div>
+  <div class="hf-wave" aria-hidden="true">
+    <svg class="a" viewBox="0 0 2400 140" preserveAspectRatio="none"><defs><linearGradient id="hfw1" x1="0" x2="1"><stop offset="0" stop-color="#0aa5c9"/><stop offset=".5" stop-color="#4258e6"/><stop offset="1" stop-color="#8b3dff"/></linearGradient></defs>
+      <path fill="none" stroke="url(#hfw1)" stroke-width="3" d="M0 80 C 100 20, 200 140, 300 80 S 500 20, 600 80 S 800 140, 900 80 S 1100 20, 1200 80 C 1300 20, 1400 140, 1500 80 S 1700 20, 1800 80 S 2000 140, 2100 80 S 2300 20, 2400 80"/></svg>
+    <svg class="b" viewBox="0 0 2400 140" preserveAspectRatio="none">
+      <path fill="none" stroke="url(#hfw1)" stroke-width="2" d="M0 95 C 150 55, 250 125, 400 95 S 650 55, 800 95 S 1050 125, 1200 95 C 1350 55, 1450 125, 1600 95 S 1850 55, 2000 95 S 2250 125, 2400 95"/></svg>
+  </div>
   <div class="wrap">
     <div>
-      <span class="eyebrow"><i></i>Now on Google Play</span>
+      <span class="eyebrow"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Now on Google Play</span>
       <h1>Hifinis.<br><span class="grad">Hear every bit.</span></h1>
       <p class="lead">A hi-res, bit-perfect music player for Android. Plays your files exactly as they were
       recorded, straight to your USB DAC, with the deepest EQ on Android. No ads, no account.</p>

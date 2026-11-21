@@ -8,32 +8,98 @@
 <link rel="canonical" href="https://hifinis.com/terms.html">
 <link rel="icon" type="image/png" href="favicon.png">
 <script src="theme.js"></script>
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f7f7fb">
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
-  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 760px;
-         margin: 0 auto; padding: 24px 20px 60px; line-height: 1.6; color: #1c1c28; }
-  h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 1.8em; }
-  footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #8884; font-size: .92em; }
-  html[data-theme="dark"] body { background: #12121a; color: #e6e6ef; } html[data-theme="dark"] a { color: #8ab4ff; }
+  /* Legal pages in the site's own look (owner 2026-11-21: "privacy policy looks very plain"). Text unchanged. */
+  :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9;
+          --shadow: 0 10px 30px rgba(20,22,60,.07); }
+  :root[data-theme="dark"] { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5;
+          --shadow: 0 10px 30px rgba(0,0,0,.35); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.7;
+         font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent);
+               backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 10px; height: 62px; max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); }
+  header.top .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; }
+  header.top img { width: 32px; height: 32px; border-radius: 9px; }
+  header.top b { font-size: 1.12em; }
+  header.top nav { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: .95em; }
+  header.top nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+  header.top nav a:hover, header.top nav a.on { color: var(--fg); }
+  header.top nav a.cta { color: #fff; background: linear-gradient(90deg, var(--accent), var(--accent2)); padding: 7px 14px; border-radius: 999px; font-weight: 650; }
+  .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  @media (max-width: 640px) { header.top nav a.opt { display: none; } header.top nav { gap: 12px; } }
+
+  .doc { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px) 60px; display: grid;
+         grid-template-columns: 260px minmax(0, 880px); gap: clamp(24px, 4vw, 56px); justify-content: center; }
+  .doc aside { position: sticky; top: 80px; align-self: start; padding-top: 40px; max-height: calc(100vh - 96px); overflow: auto; }
+  .doc aside b { display: block; font-size: .78em; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px 10px; }
+  .doc aside a { display: block; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 8px; font-size: .92em; line-height: 1.4; }
+  .doc aside a:hover { color: var(--fg); background: var(--card); }
+  .hero-doc { padding: 40px 0 6px; }
+  .chip { display: inline-block; font-size: .78em; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+          background: color-mix(in srgb, var(--accent) 10%, var(--bg2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+          padding: 5px 12px; border-radius: 999px; }
+  .paper h1 { font-size: clamp(1.9em, 4vw, 2.6em); line-height: 1.12; letter-spacing: -0.03em; font-weight: 800; margin: 14px 0 10px; }
+  .paper h1 .grad { background: linear-gradient(90deg, var(--cyan), var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .paper > p:first-of-type em, .meta { color: var(--muted); }
+  .paper { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: clamp(22px, 4vw, 48px); margin-top: 18px; }
+  .paper h2 { font-size: 1.25em; letter-spacing: -0.01em; margin: 2em 0 .5em; padding-top: .6em; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
+  .paper h2:first-of-type { border-top: 0; padding-top: 0; }
+  .paper ul, .paper ol { padding-left: 1.2em; } .paper li { margin: 4px 0; }
+  .paper table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95em; }
+  .paper th, .paper td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 18px 0 6px; padding: 0; list-style: none; }
+  .paper ul.glance { padding: 0; }
+  .glance li { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: .92em; color: var(--muted); margin: 0; }
+  .glance b { display: block; color: var(--fg); font-size: 1.05em; }
+  footer.site { border-top: 1px solid var(--line); margin-top: 40px; padding: 26px 0 40px; color: var(--muted); font-size: .92em; }
+  footer.site .wrap { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); display: flex; flex-wrap: wrap; gap: 12px 26px; }
+  footer.site a { color: var(--muted); }
+  @media (max-width: 900px) {
+    .doc { display: block; }
+    .doc aside { position: static; max-height: none; padding-top: 20px; }
+    .doc aside nav { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+    .doc aside a { white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+  }
 </style>
 </head>
 <body>
-<h1>Hifinis — Terms and Conditions</h1>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="icon-192.png" alt="Hifinis logo"><b>Hifinis</b></a>
+  <nav><a class="opt" href="./#features">Features</a><a href="guide.html">Guide</a><a href="privacy.html">Privacy</a><a class="cta" href="https://play.google.com/store/apps/details?id=com.curvio.hifinis">Get it</a></nav>
+</div></header>
+<main class="doc">
+<aside><b>On this page</b><nav><a href="#who-we-are">Who we are</a><a href="#what-you-get">What you get</a><a href="#your-licence">Your licence</a><a href="#price-and-payment">Price and payment</a><a href="#delivery-refunds-and-cancellation">Delivery, refunds and cancellation</a><a href="#your-music-and-other-services">Your music and other services</a><a href="#listening-safely">Listening safely</a><a href="#updates-and-changes-to-the-app">Updates and changes to the app</a><a href="#no-warranty">No warranty</a><a href="#limit-of-liability">Limit of liability</a><a href="#ending-the-licence">Ending the licence</a><a href="#privacy">Privacy</a><a href="#governing-law">Governing law</a><a href="#changes-to-these-terms">Changes to these terms</a><a href="#contact">Contact</a></nav></aside>
+<div class="hero-doc">
+<article class="paper">
+<span class="chip">Terms</span>
+<h1>Hifinis — <span class="grad">Terms and Conditions</span></h1>
 <p><em>Effective date: 11 November 2026 · Curvio Studio · parivallalin@gmail.com</em></p>
 
 <p>These terms apply when you install or use Hifinis, or buy the Hifinis unlock. By using the app
 or completing a purchase you agree to them. If you do not agree, please do not use the app.</p>
 
-<h2>Who we are</h2>
+<h2 id="who-we-are">Who we are</h2>
 <p>Hifinis is made and sold by Curvio Studio, the name under which Parivallal, an individual
 developer based in India, publishes software. "We" and "us" mean Curvio Studio. You can reach us
 through the <a href="contact.html">contact page</a>.</p>
 
-<h2>What you get</h2>
+<h2 id="what-you-get">What you get</h2>
 <p>Hifinis is a music player. You can use every feature for 14 days from the day your trial
 starts. After the trial, a one-time purchase (the "unlock") lets you keep using the app. The unlock
 is not a subscription: you pay once and there are no recurring charges.</p>
 
-<h2>Your licence</h2>
+<h2 id="your-licence">Your licence</h2>
 <p>When you buy the unlock we give you a personal, non-exclusive, non-transferable licence to use
 Hifinis for your own listening.</p>
 <ul>
@@ -46,68 +112,72 @@ Hifinis for your own listening.</p>
 <p>You may not resell, share, rent or publish a licence key, and you may not remove or get around
 the trial or licence checks, or redistribute the app or modified copies of it.</p>
 
-<h2>Price and payment</h2>
+<h2 id="price-and-payment">Price and payment</h2>
 <p>The price, in Indian rupees and including any applicable taxes, is shown before you pay
 (currently ₹499 in India). Payments on Google Play are processed by Google. Payments through our
 own checkout are processed by Razorpay; we never see or store your card, bank or UPI details. We
 may change the price for future purchases; a change never affects an unlock you have already
 bought.</p>
 
-<h2>Delivery, refunds and cancellation</h2>
+<h2 id="delivery-refunds-and-cancellation">Delivery, refunds and cancellation</h2>
 <p>The unlock is a digital product delivered inside the app; nothing is shipped. See the
 <a href="shipping.html">delivery policy</a> and the
 <a href="refund.html">refund and cancellation policy</a>, which form part of these terms.</p>
 
-<h2>Your music and other services</h2>
+<h2 id="your-music-and-other-services">Your music and other services</h2>
 <p>Hifinis plays the files and sources you give it. You are responsible for having the right to
 play, edit and convert that music. Optional features connect to services run by others (for example
 your own media server, a cloud drive, a streaming service you subscribe to, lyrics and artist
 information providers). Those services have their own terms and may change or stop at any time; we
 are not responsible for them.</p>
 
-<h2>Listening safely</h2>
+<h2 id="listening-safely">Listening safely</h2>
 <p>Hifinis can drive headphones and USB DACs at high volume. Set a comfortable level before you
 play, especially after changing device, output mode or volume settings. You are responsible for the
 volume you listen at and for the equipment you connect.</p>
 
-<h2>Updates and changes to the app</h2>
+<h2 id="updates-and-changes-to-the-app">Updates and changes to the app</h2>
 <p>We may update Hifinis to add, change or remove features, fix problems, or keep up with Android
 and device changes. Some features depend on your phone, Android version or audio hardware and may
 not be available on every device; the 14-day trial is there so you can check before you buy.</p>
 
-<h2>No warranty</h2>
+<h2 id="no-warranty">No warranty</h2>
 <p>Hifinis is provided "as is". We work hard to make it reliable, but to the extent the law allows
 we give no warranty that it will be without errors, will work with every device or file, or will
 meet a particular need.</p>
 
-<h2>Limit of liability</h2>
+<h2 id="limit-of-liability">Limit of liability</h2>
 <p>To the extent the law allows, we are not liable for indirect or consequential loss, for loss of
 data or files, or for damage to hearing or equipment arising from use of the app. Our total
 liability to you for any claim is limited to the amount you paid for the unlock. Nothing in these
 terms removes rights you have under consumer law that cannot be excluded.</p>
 
-<h2>Ending the licence</h2>
+<h2 id="ending-the-licence">Ending the licence</h2>
 <p>You can stop using Hifinis at any time by uninstalling it. We may cancel a licence that was
 refunded or charged back, or that is being used in breach of these terms.</p>
 
-<h2>Privacy</h2>
+<h2 id="privacy">Privacy</h2>
 <p>The <a href="privacy.html">privacy policy</a> explains what information the app and the
 checkout handle.</p>
 
-<h2>Governing law</h2>
+<h2 id="governing-law">Governing law</h2>
 <p>These terms are governed by the laws of India, and the courts of India have jurisdiction over
 any dispute.</p>
 
-<h2>Changes to these terms</h2>
+<h2 id="changes-to-these-terms">Changes to these terms</h2>
 <p>If these terms change, the updated version will be posted at this address with a new effective
 date. The terms in force when you bought the unlock continue to apply to that purchase.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions: <a href="mailto:parivallalin@gmail.com">parivallalin@gmail.com</a> or the
 <a href="contact.html">contact page</a>.</p>
-
-<footer>© 2026 Curvio Studio · <a href="./">Home</a> · <a href="terms.html">Terms</a> ·
-<a href="privacy.html">Privacy</a> · <a href="refund.html">Refunds</a> ·
-<a href="shipping.html">Delivery</a> · <a href="contact.html">Contact</a></footer>
+</article>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+  <span>© 2026 Curvio Studio</span>
+  <a href="./">Home</a> <a href="guide.html">User guide</a> <a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a>
+  <a href="refund.html">Refunds</a> <a href="shipping.html">Delivery</a> <a href="contact.html">Contact</a>
+</div></footer>
 </body>
 </html>

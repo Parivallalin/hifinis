@@ -8,23 +8,89 @@
 <link rel="canonical" href="https://hifinis.com/refund.html">
 <link rel="icon" type="image/png" href="favicon.png">
 <script src="theme.js"></script>
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f7f7fb">
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
-  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 760px;
-         margin: 0 auto; padding: 24px 20px 60px; line-height: 1.6; color: #1c1c28; }
-  h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 1.8em; }
-  footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #8884; font-size: .92em; }
-  html[data-theme="dark"] body { background: #12121a; color: #e6e6ef; } html[data-theme="dark"] a { color: #8ab4ff; }
+  /* Legal pages in the site's own look (owner 2026-11-21: "privacy policy looks very plain"). Text unchanged. */
+  :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9;
+          --shadow: 0 10px 30px rgba(20,22,60,.07); }
+  :root[data-theme="dark"] { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5;
+          --shadow: 0 10px 30px rgba(0,0,0,.35); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.7;
+         font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent);
+               backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 10px; height: 62px; max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); }
+  header.top .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; }
+  header.top img { width: 32px; height: 32px; border-radius: 9px; }
+  header.top b { font-size: 1.12em; }
+  header.top nav { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: .95em; }
+  header.top nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+  header.top nav a:hover, header.top nav a.on { color: var(--fg); }
+  header.top nav a.cta { color: #fff; background: linear-gradient(90deg, var(--accent), var(--accent2)); padding: 7px 14px; border-radius: 999px; font-weight: 650; }
+  .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  @media (max-width: 640px) { header.top nav a.opt { display: none; } header.top nav { gap: 12px; } }
+
+  .doc { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px) 60px; display: grid;
+         grid-template-columns: 260px minmax(0, 880px); gap: clamp(24px, 4vw, 56px); justify-content: center; }
+  .doc aside { position: sticky; top: 80px; align-self: start; padding-top: 40px; max-height: calc(100vh - 96px); overflow: auto; }
+  .doc aside b { display: block; font-size: .78em; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px 10px; }
+  .doc aside a { display: block; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 8px; font-size: .92em; line-height: 1.4; }
+  .doc aside a:hover { color: var(--fg); background: var(--card); }
+  .hero-doc { padding: 40px 0 6px; }
+  .chip { display: inline-block; font-size: .78em; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+          background: color-mix(in srgb, var(--accent) 10%, var(--bg2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+          padding: 5px 12px; border-radius: 999px; }
+  .paper h1 { font-size: clamp(1.9em, 4vw, 2.6em); line-height: 1.12; letter-spacing: -0.03em; font-weight: 800; margin: 14px 0 10px; }
+  .paper h1 .grad { background: linear-gradient(90deg, var(--cyan), var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .paper > p:first-of-type em, .meta { color: var(--muted); }
+  .paper { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: clamp(22px, 4vw, 48px); margin-top: 18px; }
+  .paper h2 { font-size: 1.25em; letter-spacing: -0.01em; margin: 2em 0 .5em; padding-top: .6em; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
+  .paper h2:first-of-type { border-top: 0; padding-top: 0; }
+  .paper ul, .paper ol { padding-left: 1.2em; } .paper li { margin: 4px 0; }
+  .paper table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95em; }
+  .paper th, .paper td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 18px 0 6px; padding: 0; list-style: none; }
+  .paper ul.glance { padding: 0; }
+  .glance li { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: .92em; color: var(--muted); margin: 0; }
+  .glance b { display: block; color: var(--fg); font-size: 1.05em; }
+  footer.site { border-top: 1px solid var(--line); margin-top: 40px; padding: 26px 0 40px; color: var(--muted); font-size: .92em; }
+  footer.site .wrap { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); display: flex; flex-wrap: wrap; gap: 12px 26px; }
+  footer.site a { color: var(--muted); }
+  @media (max-width: 900px) {
+    .doc { display: block; }
+    .doc aside { position: static; max-height: none; padding-top: 20px; }
+    .doc aside nav { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+    .doc aside a { white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+  }
 </style>
 </head>
 <body>
-<h1>Hifinis — Refund and Cancellation Policy</h1>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="icon-192.png" alt="Hifinis logo"><b>Hifinis</b></a>
+  <nav><a class="opt" href="./#features">Features</a><a href="guide.html">Guide</a><a href="privacy.html">Privacy</a><a class="cta" href="https://play.google.com/store/apps/details?id=com.curvio.hifinis">Get it</a></nav>
+</div></header>
+<main class="doc">
+<aside><b>On this page</b><nav><a href="#purchases-through-our-own-checkout-razorpay">Purchases through our own checkout (Razorpay)</a><a href="#purchases-on-google-play">Purchases on Google Play</a><a href="#if-money-left-your-account-but-the-payment-failed">If money left your account but the payment failed</a><a href="#cancellation">Cancellation</a><a href="#promo-codes-and-gift-keys">Promo codes and gift keys</a><a href="#contact">Contact</a></nav></aside>
+<div class="hero-doc">
+<article class="paper">
+<span class="chip">Refunds</span>
+<h1>Hifinis — <span class="grad">Refund and Cancellation Policy</span></h1>
 <p><em>Effective date: 11 November 2026 · Curvio Studio · parivallalin@gmail.com</em></p>
 
 <p>You can use every feature of Hifinis for 14 days before paying anything, so please try it on
 your own phone and audio gear first. If you buy the unlock and it is not right for you, this page
 explains how to get your money back.</p>
 
-<h2>Purchases through our own checkout (Razorpay)</h2>
+<h2 id="purchases-through-our-own-checkout-razorpay">Purchases through our own checkout (Razorpay)</h2>
 <ul>
   <li><strong>Within 7 days of payment:</strong> we refund the full amount on request, for any
       reason.</li>
@@ -42,7 +108,7 @@ start the refund within 2 working days of approving it; your bank or payment pro
 credits it within 5 to 7 working days after that. When a purchase is refunded, its licence key is
 cancelled.</p>
 
-<h2>Purchases on Google Play</h2>
+<h2 id="purchases-on-google-play">Purchases on Google Play</h2>
 <p>Google Play handles these payments, so the refund comes from Google:</p>
 <ul>
   <li><strong>Within 48 hours:</strong> ask Google directly from your order history at
@@ -54,27 +120,31 @@ cancelled.</p>
 <p>Google returns the money to the payment method on your Google account, on Google's own
 timeline.</p>
 
-<h2>If money left your account but the payment failed</h2>
+<h2 id="if-money-left-your-account-but-the-payment-failed">If money left your account but the payment failed</h2>
 <p>Sometimes a bank debits an amount for a payment that did not complete. Banks reverse these
 automatically, usually within 5 to 7 working days. If the money has not come back by then, email us
 the date, amount and any reference number and we will follow it up with the payment provider.</p>
 
-<h2>Cancellation</h2>
+<h2 id="cancellation">Cancellation</h2>
 <p>The unlock is a one-time purchase, not a subscription. There is nothing to cancel and you are
 never charged again. If you start a checkout and change your mind, simply close the page; no money
 is taken until you approve the payment. Once a payment is complete, the refund rules above
 apply.</p>
 
-<h2>Promo codes and gift keys</h2>
+<h2 id="promo-codes-and-gift-keys">Promo codes and gift keys</h2>
 <p>Unlocks obtained with a promo code or a gift key were not paid for and cannot be exchanged for
 money.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions: <a href="mailto:parivallalin@gmail.com">parivallalin@gmail.com</a> or the
 <a href="contact.html">contact page</a>.</p>
-
-<footer>© 2026 Curvio Studio · <a href="./">Home</a> · <a href="terms.html">Terms</a> ·
-<a href="privacy.html">Privacy</a> · <a href="refund.html">Refunds</a> ·
-<a href="shipping.html">Delivery</a> · <a href="contact.html">Contact</a></footer>
+</article>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+  <span>© 2026 Curvio Studio</span>
+  <a href="./">Home</a> <a href="guide.html">User guide</a> <a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a>
+  <a href="refund.html">Refunds</a> <a href="shipping.html">Delivery</a> <a href="contact.html">Contact</a>
+</div></footer>
 </body>
 </html>

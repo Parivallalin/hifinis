@@ -8,22 +8,88 @@
 <link rel="canonical" href="https://hifinis.com/shipping.html">
 <link rel="icon" type="image/png" href="favicon.png">
 <script src="theme.js"></script>
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f7f7fb">
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
-  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 760px;
-         margin: 0 auto; padding: 24px 20px 60px; line-height: 1.6; color: #1c1c28; }
-  h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 1.8em; }
-  footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #8884; font-size: .92em; }
-  html[data-theme="dark"] body { background: #12121a; color: #e6e6ef; } html[data-theme="dark"] a { color: #8ab4ff; }
+  /* Legal pages in the site's own look (owner 2026-11-21: "privacy policy looks very plain"). Text unchanged. */
+  :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9;
+          --shadow: 0 10px 30px rgba(20,22,60,.07); }
+  :root[data-theme="dark"] { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5;
+          --shadow: 0 10px 30px rgba(0,0,0,.35); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.7;
+         font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent);
+               backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 10px; height: 62px; max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); }
+  header.top .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; }
+  header.top img { width: 32px; height: 32px; border-radius: 9px; }
+  header.top b { font-size: 1.12em; }
+  header.top nav { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: .95em; }
+  header.top nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+  header.top nav a:hover, header.top nav a.on { color: var(--fg); }
+  header.top nav a.cta { color: #fff; background: linear-gradient(90deg, var(--accent), var(--accent2)); padding: 7px 14px; border-radius: 999px; font-weight: 650; }
+  .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  @media (max-width: 640px) { header.top nav a.opt { display: none; } header.top nav { gap: 12px; } }
+
+  .doc { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px) 60px; display: grid;
+         grid-template-columns: 260px minmax(0, 880px); gap: clamp(24px, 4vw, 56px); justify-content: center; }
+  .doc aside { position: sticky; top: 80px; align-self: start; padding-top: 40px; max-height: calc(100vh - 96px); overflow: auto; }
+  .doc aside b { display: block; font-size: .78em; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px 10px; }
+  .doc aside a { display: block; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 8px; font-size: .92em; line-height: 1.4; }
+  .doc aside a:hover { color: var(--fg); background: var(--card); }
+  .hero-doc { padding: 40px 0 6px; }
+  .chip { display: inline-block; font-size: .78em; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+          background: color-mix(in srgb, var(--accent) 10%, var(--bg2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+          padding: 5px 12px; border-radius: 999px; }
+  .paper h1 { font-size: clamp(1.9em, 4vw, 2.6em); line-height: 1.12; letter-spacing: -0.03em; font-weight: 800; margin: 14px 0 10px; }
+  .paper h1 .grad { background: linear-gradient(90deg, var(--cyan), var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .paper > p:first-of-type em, .meta { color: var(--muted); }
+  .paper { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: clamp(22px, 4vw, 48px); margin-top: 18px; }
+  .paper h2 { font-size: 1.25em; letter-spacing: -0.01em; margin: 2em 0 .5em; padding-top: .6em; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
+  .paper h2:first-of-type { border-top: 0; padding-top: 0; }
+  .paper ul, .paper ol { padding-left: 1.2em; } .paper li { margin: 4px 0; }
+  .paper table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95em; }
+  .paper th, .paper td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 18px 0 6px; padding: 0; list-style: none; }
+  .paper ul.glance { padding: 0; }
+  .glance li { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: .92em; color: var(--muted); margin: 0; }
+  .glance b { display: block; color: var(--fg); font-size: 1.05em; }
+  footer.site { border-top: 1px solid var(--line); margin-top: 40px; padding: 26px 0 40px; color: var(--muted); font-size: .92em; }
+  footer.site .wrap { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); display: flex; flex-wrap: wrap; gap: 12px 26px; }
+  footer.site a { color: var(--muted); }
+  @media (max-width: 900px) {
+    .doc { display: block; }
+    .doc aside { position: static; max-height: none; padding-top: 20px; }
+    .doc aside nav { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+    .doc aside a { white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+  }
 </style>
 </head>
 <body>
-<h1>Hifinis — Shipping and Delivery Policy</h1>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="icon-192.png" alt="Hifinis logo"><b>Hifinis</b></a>
+  <nav><a class="opt" href="./#features">Features</a><a href="guide.html">Guide</a><a href="privacy.html">Privacy</a><a class="cta" href="https://play.google.com/store/apps/details?id=com.curvio.hifinis">Get it</a></nav>
+</div></header>
+<main class="doc">
+<aside><b>On this page</b><nav><a href="#how-the-unlock-is-delivered">How the unlock is delivered</a><a href="#if-the-app-has-not-unlocked">If the app has not unlocked</a><a href="#new-phone">New phone</a><a href="#contact">Contact</a></nav></aside>
+<div class="hero-doc">
+<article class="paper">
+<span class="chip">Delivery</span>
+<h1>Hifinis — <span class="grad">Shipping and Delivery Policy</span></h1>
 <p><em>Effective date: 11 November 2026 · Curvio Studio · parivallalin@gmail.com</em></p>
 
 <p>Hifinis and the Hifinis unlock are digital products. We do not sell or ship any physical goods,
 so there are no shipping charges and no delivery address is needed.</p>
 
-<h2>How the unlock is delivered</h2>
+<h2 id="how-the-unlock-is-delivered">How the unlock is delivered</h2>
 <ul>
   <li><strong>Google Play:</strong> the app is unlocked as soon as Google Play confirms the
       payment, normally within seconds.</li>
@@ -32,7 +98,7 @@ so there are no shipping charges and no delivery address is needed.</p>
       page shows your order number; keep it, with your payment receipt, for restoring later.</li>
 </ul>
 
-<h2>If the app has not unlocked</h2>
+<h2 id="if-the-app-has-not-unlocked">If the app has not unlocked</h2>
 <ol>
   <li>Make sure the phone is online and open Hifinis again.</li>
   <li>Google Play purchase: open Settings in Hifinis and tap <em>Restore</em>.</li>
@@ -44,16 +110,20 @@ so there are no shipping charges and no delivery address is needed.</p>
 with your order number. We reply within 2 working days and will either deliver the key or refund
 the payment, as set out in the <a href="refund.html">refund policy</a>.</p>
 
-<h2>New phone</h2>
+<h2 id="new-phone">New phone</h2>
 <p>A Google Play unlock follows your Google account. A checkout purchase can be restored on up to
 three of your own devices with the <em>Restore</em> steps above.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions: <a href="mailto:parivallalin@gmail.com">parivallalin@gmail.com</a> or the
 <a href="contact.html">contact page</a>.</p>
-
-<footer>© 2026 Curvio Studio · <a href="./">Home</a> · <a href="terms.html">Terms</a> ·
-<a href="privacy.html">Privacy</a> · <a href="refund.html">Refunds</a> ·
-<a href="shipping.html">Delivery</a> · <a href="contact.html">Contact</a></footer>
+</article>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+  <span>© 2026 Curvio Studio</span>
+  <a href="./">Home</a> <a href="guide.html">User guide</a> <a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a>
+  <a href="refund.html">Refunds</a> <a href="shipping.html">Delivery</a> <a href="contact.html">Contact</a>
+</div></footer>
 </body>
 </html>

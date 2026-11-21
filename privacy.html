@@ -7,16 +7,90 @@
 <meta name="description" content="What Hifinis does and does not collect: no ads, no account, your music never leaves your phone; optional lyrics, artist pictures, casting and purchases explained.">
 <link rel="canonical" href="https://hifinis.com/privacy.html">
 <script src="theme.js"></script>
+<link rel="stylesheet" href="motion.css">
+<script src="motion.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f7f7fb">
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
-  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 760px;
-         margin: 0 auto; padding: 24px 20px 60px; line-height: 1.6; color: #1c1c28; }
-  h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 1.8em; }
-  html[data-theme="dark"] body { background: #12121a; color: #e6e6ef; } html[data-theme="dark"] a { color: #8ab4ff; }
+  /* Legal pages in the site's own look (owner 2026-11-21: "privacy policy looks very plain"). Text unchanged. */
+  :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9;
+          --shadow: 0 10px 30px rgba(20,22,60,.07); }
+  :root[data-theme="dark"] { --bg:#0b0d14; --bg2:#121624; --card:#161b2b; --line:#262c40; --fg:#eef0f8; --muted:#a3a9c2; --accent:#6f8bff; --accent2:#b36bff; --cyan:#3fd2f5;
+          --shadow: 0 10px 30px rgba(0,0,0,.35); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.7;
+         font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent);
+               backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 10px; height: 62px; max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); }
+  header.top .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; }
+  header.top img { width: 32px; height: 32px; border-radius: 9px; }
+  header.top b { font-size: 1.12em; }
+  header.top nav { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: .95em; }
+  header.top nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+  header.top nav a:hover, header.top nav a.on { color: var(--fg); }
+  header.top nav a.cta { color: #fff; background: linear-gradient(90deg, var(--accent), var(--accent2)); padding: 7px 14px; border-radius: 999px; font-weight: 650; }
+  .theme-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  @media (max-width: 640px) { header.top nav a.opt { display: none; } header.top nav { gap: 12px; } }
+
+  .doc { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px) 60px; display: grid;
+         grid-template-columns: 260px minmax(0, 880px); gap: clamp(24px, 4vw, 56px); justify-content: center; }
+  .doc aside { position: sticky; top: 80px; align-self: start; padding-top: 40px; max-height: calc(100vh - 96px); overflow: auto; }
+  .doc aside b { display: block; font-size: .78em; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px 10px; }
+  .doc aside a { display: block; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: 8px; font-size: .92em; line-height: 1.4; }
+  .doc aside a:hover { color: var(--fg); background: var(--card); }
+  .hero-doc { padding: 40px 0 6px; }
+  .chip { display: inline-block; font-size: .78em; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+          background: color-mix(in srgb, var(--accent) 10%, var(--bg2)); border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+          padding: 5px 12px; border-radius: 999px; }
+  .paper h1 { font-size: clamp(1.9em, 4vw, 2.6em); line-height: 1.12; letter-spacing: -0.03em; font-weight: 800; margin: 14px 0 10px; }
+  .paper h1 .grad { background: linear-gradient(90deg, var(--cyan), var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .paper > p:first-of-type em, .meta { color: var(--muted); }
+  .paper { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: clamp(22px, 4vw, 48px); margin-top: 18px; }
+  .paper h2 { font-size: 1.25em; letter-spacing: -0.01em; margin: 2em 0 .5em; padding-top: .6em; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
+  .paper h2:first-of-type { border-top: 0; padding-top: 0; }
+  .paper ul, .paper ol { padding-left: 1.2em; } .paper li { margin: 4px 0; }
+  .paper table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95em; }
+  .paper th, .paper td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 18px 0 6px; padding: 0; list-style: none; }
+  .paper ul.glance { padding: 0; }
+  .glance li { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: .92em; color: var(--muted); margin: 0; }
+  .glance b { display: block; color: var(--fg); font-size: 1.05em; }
+  footer.site { border-top: 1px solid var(--line); margin-top: 40px; padding: 26px 0 40px; color: var(--muted); font-size: .92em; }
+  footer.site .wrap { max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); display: flex; flex-wrap: wrap; gap: 12px 26px; }
+  footer.site a { color: var(--muted); }
+  @media (max-width: 900px) {
+    .doc { display: block; }
+    .doc aside { position: static; max-height: none; padding-top: 20px; }
+    .doc aside nav { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+    .doc aside a { white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+  }
 </style>
 </head>
 <body>
-<h1>Hifinis — Privacy Policy</h1>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="icon-192.png" alt="Hifinis logo"><b>Hifinis</b></a>
+  <nav><a class="opt" href="./#features">Features</a><a href="guide.html">Guide</a><a href="privacy.html" class=on>Privacy</a><a class="cta" href="https://play.google.com/store/apps/details?id=com.curvio.hifinis">Get it</a></nav>
+</div></header>
+<main class="doc">
+<aside><b>On this page</b><nav><a href="#data-we-do-not-collect">Data we do not collect</a><a href="#music-library-access">Music library access</a><a href="#artist-images-deezer">Artist images (Deezer)</a><a href="#artist-pages-wikipedia-wikidata">Artist pages (Wikipedia, Wikidata)</a><a href="#purchases-google-play-version">Purchases (Google Play version)</a><a href="#purchases-our-own-checkout">Purchases (our own checkout)</a><a href="#where-purchase-records-are-kept-and-deleting-them">Where purchase records are kept, and deleting them</a><a href="#online-lyrics-lrclib">Online lyrics (LRCLIB)</a><a href="#update-check-website-github-version-only">Update check (website / GitHub version only)</a><a href="#microphone-permission-visualizer">Microphone permission (visualizer)</a><a href="#usb-devices">USB devices</a><a href="#network-music-sources-optional">Network music sources (optional)</a><a href="#lyrics-translation">Lyrics translation</a><a href="#chromecast">Chromecast</a><a href="#diagnostics-sent-by-google-components">Diagnostics sent by Google components</a><a href="#editing-your-files">Editing your files</a><a href="#backups">Backups</a><a href="#children">Children</a><a href="#changes">Changes</a><a href="#contact">Contact</a></nav></aside>
+<div class="hero-doc">
+<article class="paper">
+<span class="chip">Privacy</span>
+<h1>Hifinis — <span class="grad">Privacy Policy</span></h1>
 <p><em>Effective date: 11 November 2026 · Curvio Studio · parivallalin@gmail.com</em></p>
+<ul class="glance" aria-label="At a glance">
+  <li><b>No ads</b>and no tracking</li>
+  <li><b>No account</b>nothing to sign up for</li>
+  <li><b>Your music stays</b>on your phone</li>
+  <li><b>Only a purchase record</b>reaches Curvio Studio</li>
+</ul>
+
 
 <p>Hifinis is an offline audiophile music player. Your music, your listening habits, and your
 files stay on your device. Hifinis has no accounts and no advertising, and Curvio Studio does not
@@ -24,24 +98,24 @@ track you. The only information Curvio Studio receives is the purchase record de
 <em>Purchases</em> below. Two Google components inside the app send Google limited diagnostics — see
 <em>Diagnostics sent by Google components</em> below.</p>
 
-<h2>Data we do not collect</h2>
+<h2 id="data-we-do-not-collect">Data we do not collect</h2>
 <p>Hifinis does not collect, store on our servers, sell, or share: your music files, library
 contents, playlists, favorites, play history, settings, location or contacts. Apart from the
 purchase record described under <em>Purchases</em>, nothing about you is transmitted to Curvio
 Studio.</p>
 
-<h2>Music library access</h2>
+<h2 id="music-library-access">Music library access</h2>
 <p>You choose the folders Hifinis may read using Android's system folder picker. Hifinis indexes
 the audio files in those folders (titles, artists, albums, artwork) into a local database on your
 device only. Removing a folder or uninstalling the app removes that index.</p>
 
-<h2>Artist images (Deezer)</h2>
+<h2 id="artist-images-deezer">Artist images (Deezer)</h2>
 <p>When "Artist images" is enabled (Settings → Library &amp; appearance), Hifinis sends the artist
 name being displayed to the Deezer API (api.deezer.com) to fetch a public artist photo. The artist
 name is the only data sent; results are cached on your device. Deezer's own privacy policy applies
 to that request. You can turn this off at any time.</p>
 
-<h2>Artist pages (Wikipedia, Wikidata)</h2>
+<h2 id="artist-pages-wikipedia-wikidata">Artist pages (Wikipedia, Wikidata)</h2>
 <p>With "Artist images" on, opening an artist's page also sends that artist's name to Wikipedia
 (en.wikipedia.org) and Wikidata (wikidata.org), both run by the Wikimedia Foundation, to show a
 public photo, a short biography and facts such as birth date and genres. The artist name is the only
@@ -49,7 +123,7 @@ data sent; the result is stored on your device so each artist is looked up once.
 Foundation's privacy policy applies to those requests. Biography text is shown under its CC BY-SA
 licence with a link to the article.</p>
 
-<h2>Purchases (Google Play version)</h2>
+<h2 id="purchases-google-play-version">Purchases (Google Play version)</h2>
 <p>The Google Play version can be tried in full for 14 days; after that a one-time in-app purchase
 unlocks it. Purchases and promo codes are handled entirely by Google Play: Hifinis never sees your
 payment details. The app only asks Google Play whether your Google account owns the unlock, and keeps
@@ -62,7 +136,7 @@ your phone's Android ID and the app; it cannot be turned back into the Android I
 you. You may also choose to add an email address to the record so we can find your purchase when
 you write to us; this is optional and the app works the same without it.</p>
 
-<h2>Purchases (our own checkout)</h2>
+<h2 id="purchases-our-own-checkout">Purchases (our own checkout)</h2>
 <p>On phones without Google Play, the unlock can be bought through our own checkout. The payment is
 processed by Razorpay; we never see or store your card, bank or UPI details, and
 <a href="https://razorpay.com/privacy/">Razorpay's privacy policy</a> applies to the payment. Our
@@ -73,7 +147,7 @@ it is you when you restore the purchase on another device, to handle refunds, an
 records the law requires. If you enter a licence key with an email address, that address is stored
 with the key.</p>
 
-<h2>Where purchase records are kept, and deleting them</h2>
+<h2 id="where-purchase-records-are-kept-and-deleting-them">Where purchase records are kept, and deleting them</h2>
 <p>Purchase records are stored on Cloudflare (our hosting provider) and are not sold, shared for
 advertising, or combined with anything else. We keep them for as long as the licence is in use and
 as long as tax and accounting law requires. To see, correct or delete the record of your purchase,
@@ -81,7 +155,7 @@ email <a href="mailto:parivallalin@gmail.com">parivallalin@gmail.com</a>; we wil
 we are not legally required to keep. Deleting an order means it can no longer be restored on a new
 device.</p>
 
-<h2>Online lyrics (LRCLIB)</h2>
+<h2 id="online-lyrics-lrclib">Online lyrics (LRCLIB)</h2>
 <p>When "Fetch lyrics online" is enabled (Settings → Lock screen &amp; widgets) and a song has no
 synced lyrics of its own, Hifinis sends that song's title, artist, album and length to LRCLIB
 (lrclib.net), an open lyrics database, to look up its lyrics. Nothing else is sent: no account,
@@ -91,7 +165,7 @@ source added, Hifinis makes no network requests of its own (apart from the updat
 versions downloaded from our website, and the Google components described under
 <em>Diagnostics sent by Google components</em>).</p>
 
-<h2>Update check (website / GitHub version only)</h2>
+<h2 id="update-check-website-github-version-only">Update check (website / GitHub version only)</h2>
 <p>The version of Hifinis downloaded from our website asks GitHub (api.github.com, operated by
 GitHub, Inc.) about twice a day whether a newer version has been published, and downloads it from
 GitHub only when you tap <em>Update</em>. These requests carry no personal data — GitHub sees only
@@ -99,17 +173,17 @@ your IP address and the app version, as with any web request. You can turn the c
 Settings → About → <em>Notify me about updates</em>. The Google Play version has no such check;
 Play handles its updates.</p>
 
-<h2>Microphone permission (visualizer)</h2>
+<h2 id="microphone-permission-visualizer">Microphone permission (visualizer)</h2>
 <p>Android requires the microphone (RECORD_AUDIO) permission for its audio-visualizer API, which
 Hifinis uses solely to compute the on-screen spectrum of the music Hifinis itself is playing.
 Hifinis does not record, store, or transmit any audio from the microphone. You may deny this
 permission; only the visualizer screen is affected.</p>
 
-<h2>USB devices</h2>
+<h2 id="usb-devices">USB devices</h2>
 <p>With your permission, Hifinis talks directly to USB DACs you connect, purely to play audio.
 Device details (model, supported formats) are read locally and never leave your device.</p>
 
-<h2>Network music sources (optional)</h2>
+<h2 id="network-music-sources-optional">Network music sources (optional)</h2>
 <p>Hifinis can play music from places other than your phone's storage — a home media server
 (Jellyfin, Plex, Subsonic/Navidrome), a network share (SMB, WebDAV/Nextcloud, DLNA/UPnP,
 FTP), a cloud drive (Google Drive, Dropbox, OneDrive), a streaming service you already
@@ -126,17 +200,17 @@ subscribe to (Tidal, Qobuz, SoundCloud), or internet radio. None of this exists 
   <li>Removing a source deletes its stored credentials from your device.</li>
 </ul>
 
-<h2>Lyrics translation</h2>
+<h2 id="lyrics-translation">Lyrics translation</h2>
 <p>Lyric translation runs entirely on your device using Google's ML Kit on-device translation.
 The first time you pick a language, Android downloads that language model from Google's
 servers; after that, translation works offline. Your lyrics are never uploaded — the text is
 translated locally and is not sent anywhere.</p>
 
-<h2>Chromecast</h2>
+<h2 id="chromecast">Chromecast</h2>
 <p>Hifinis includes Google's Cast SDK so you can play music on a Chromecast or other Cast device
 on your network. When you cast, the song is streamed from your phone to the device you picked.</p>
 
-<h2>Diagnostics sent by Google components</h2>
+<h2 id="diagnostics-sent-by-google-components">Diagnostics sent by Google components</h2>
 <p>Two Google components built into Hifinis, ML Kit (lyrics translation) and the Google Cast SDK
 (Chromecast), send Google limited diagnostic and usage information so Google can keep them working:
 error codes and performance figures, the languages you translate between, Cast device discovery and
@@ -145,28 +219,31 @@ identifier. This information goes to Google, not to Curvio Studio, and is handle
 <a href="https://policies.google.com/privacy">Google's privacy policy</a>. It never includes your
 music, your files or your lyrics. Curvio Studio does not receive any of this information.</p>
 
-<h2>Editing your files</h2>
+<h2 id="editing-your-files">Editing your files</h2>
 <p>The tag editor writes the changes you make (title, artist, album, artwork and so on) back
 into your own audio files, on your device. Nothing about those edits is transmitted.</p>
 
-<h2>Backups</h2>
+<h2 id="backups">Backups</h2>
 <p>The in-app Backup feature writes a file to a location you choose, containing your settings and
 playlists. It stays wherever you save it; we never receive it.</p>
 
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>Hifinis is a general-audience music player and does not knowingly collect data from anyone,
 including children.</p>
 
-<h2>Changes</h2>
+<h2 id="changes">Changes</h2>
 <p>If this policy changes, the updated version will be posted at this address with a new effective
 date.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions: <a href="mailto:parivallalin@gmail.com">parivallalin@gmail.com</a></p>
-
-<p style="margin-top:3em;padding-top:1em;border-top:1px solid #8884;font-size:.92em">© 2026 Curvio Studio ·
-<a href="./">Home</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> ·
-<a href="refund.html">Refunds</a> · <a href="shipping.html">Delivery</a> ·
-<a href="contact.html">Contact</a></p>
+</article>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+  <span>© 2026 Curvio Studio</span>
+  <a href="./">Home</a> <a href="guide.html">User guide</a> <a href="privacy.html">Privacy</a> <a href="terms.html">Terms</a>
+  <a href="refund.html">Refunds</a> <a href="shipping.html">Delivery</a> <a href="contact.html">Contact</a>
+</div></footer>
 </body>
 </html>
