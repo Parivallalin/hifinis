@@ -132,15 +132,13 @@
   .btn.main:hover { box-shadow: 0 16px 36px var(--glow); }
   .btn.alt { border: 1px solid var(--line); color: var(--fg); background: var(--bg2); }
   .small { color: var(--muted); font-size: 0.9em; }
-  /* A real bezel: the screenshot sits below a top strip with a camera dot, so the app's top
-     icons never press against the frame's rounded corners (owner 2026-11-21). */
-  .phone { width: clamp(260px, 24vw, 320px); justify-self: center; padding: 30px 10px 14px; border-radius: 44px; position: relative;
+  /* Plain frame, no notch (owner 2026-11-21). The screenshots themselves start ~5px lower, so the
+     app's top icons don't press against the edge. */
+  .phone { width: clamp(260px, 24vw, 320px); justify-self: center; padding: 10px; border-radius: 42px; position: relative;
            background: linear-gradient(150deg, #23283f, #0c0e18); box-shadow: 0 40px 90px var(--glow), 0 10px 30px rgba(0,0,0,.25);
            transform: rotate(-3deg); transition: transform .5s; }
   .phone:hover { transform: rotate(0deg) translateY(-4px); }
-  .phone::before { content: ""; position: absolute; top: 11px; left: 50%; width: 11px; height: 11px; margin-left: -5.5px;
-                   border-radius: 50%; background: #05060b; box-shadow: inset 0 0 0 2px #2b3150; }
-  .phone img { display: block; width: 100%; height: auto; border-radius: 22px; }
+  .phone img { display: block; width: 100%; height: auto; border-radius: 33px; }
   .phone .badge { position: absolute; left: -26px; bottom: 70px; background: var(--bg2); color: var(--fg); border: 1px solid var(--line);
                   border-radius: 14px; padding: 8px 12px; font-size: .82em; font-weight: 700; box-shadow: var(--shadow); transform: rotate(3deg); }
   .phone .badge span { color: #16a34a; }
@@ -165,7 +163,7 @@
 
   .shots { display: flex; gap: 18px; overflow-x: auto; padding: 30px clamp(16px, 3vw, 48px) 22px; scroll-snap-type: x mandatory; max-width: 1400px; margin: 0 auto; }
   .shots figure { margin: 0; flex: 0 0 auto; scroll-snap-align: center; text-align: center; }
-  .shots img { height: 460px; width: auto; border-radius: 28px; border: 6px solid #141729; border-top-width: 22px; border-bottom-width: 10px;
+  .shots img { height: 460px; width: auto; border-radius: 26px; border: 6px solid #141729;
                display: block; box-shadow: var(--shadow);
                transition: transform .3s; }
   .shots img:hover { transform: translateY(-6px); }
@@ -254,7 +252,7 @@
       </ul>
     </div>
     <div class="phone">
-      <img src="screenshots/01-nowplaying.webp" alt="Hifinis Now Playing: 96 kHz WAV, USB Exclusive, bit-perfect to a USB DAC" width="540" height="1115">
+      <img src="screenshots/01-nowplaying.webp" alt="Hifinis Now Playing: 96 kHz WAV, USB Exclusive, bit-perfect to a USB DAC" width="540" height="1127">
       <div class="badge"><span>&#10003;</span> Bit-perfect to your DAC</div>
     </div>
   </div>
@@ -271,14 +269,14 @@
 </div>
 
 <div class="shots" aria-label="Screenshots">
-  <figure><img src="screenshots/01-nowplaying.webp" alt="Hifinis Now Playing: 96 kHz WAV, USB Exclusive, bit-perfect to a JadeAudio JA11 DAC, Hi-Res badge" loading="lazy" width="540" height="1115"><figcaption>Bit-perfect to your DAC</figcaption></figure>
-  <figure><img src="screenshots/02-signal-path.webp" alt="Hifinis signal path: file, engine, processing and DAC all marked clean — bit-perfect" loading="lazy" width="540" height="1115"><figcaption>See every stage, live</figcaption></figure>
-  <figure><img src="screenshots/03-eq.webp" alt="Hifinis 10-band equalizer with the Harman Target preset and live spectrum" loading="lazy" width="540" height="1115"><figcaption>EQ · 5 to 31 bands · 120 presets</figcaption></figure>
-  <figure><img src="screenshots/04-home.webp" alt="Hifinis Home in the Frosted glass design: songs, albums, artists, playlists, favourites" loading="lazy" width="540" height="1115"><figcaption>Your library, your way</figcaption></figure>
-  <figure><img src="screenshots/05-lyrics.webp" alt="Hifinis synced lyrics in big type with Translate, Sync and Lock screen" loading="lazy" width="540" height="1115"><figcaption>Synced lyrics, big and clear</figcaption></figure>
-  <figure><img src="screenshots/06-outputs.webp" alt="Hifinis Outputs: USB DAC, phone speaker, Cast and sharing with other apps" loading="lazy" width="540" height="1115"><figcaption>One app, every device</figcaption></figure>
-  <figure><img src="screenshots/07-studio.webp" alt="Hifinis Audio Studio: waveform, A/B compare, loudness and true-peak meters, remaster presets" loading="lazy" width="540" height="1115"><figcaption>A full audio studio</figcaption></figure>
-  <figure><img src="screenshots/08-designs.webp" alt="Hifinis Home in the dark Cinema design" loading="lazy" width="540" height="1115"><figcaption>29 designs. Make it yours</figcaption></figure>
+  <figure><img src="screenshots/01-nowplaying.webp" alt="Hifinis Now Playing: 96 kHz WAV, USB Exclusive, bit-perfect to a JadeAudio JA11 DAC, Hi-Res badge" loading="lazy" width="540" height="1127"><figcaption>Bit-perfect to your DAC</figcaption></figure>
+  <figure><img src="screenshots/02-signal-path.webp" alt="Hifinis signal path: file, engine, processing and DAC all marked clean — bit-perfect" loading="lazy" width="540" height="1127"><figcaption>See every stage, live</figcaption></figure>
+  <figure><img src="screenshots/03-eq.webp" alt="Hifinis 10-band equalizer with the Harman Target preset and live spectrum" loading="lazy" width="540" height="1127"><figcaption>EQ · 5 to 31 bands · 120 presets</figcaption></figure>
+  <figure><img src="screenshots/04-home.webp" alt="Hifinis Home in the Frosted glass design: songs, albums, artists, playlists, favourites" loading="lazy" width="540" height="1127"><figcaption>Your library, your way</figcaption></figure>
+  <figure><img src="screenshots/05-lyrics.webp" alt="Hifinis synced lyrics in big type with Translate, Sync and Lock screen" loading="lazy" width="540" height="1127"><figcaption>Synced lyrics, big and clear</figcaption></figure>
+  <figure><img src="screenshots/06-outputs.webp" alt="Hifinis Outputs: USB DAC, phone speaker, Cast and sharing with other apps" loading="lazy" width="540" height="1127"><figcaption>One app, every device</figcaption></figure>
+  <figure><img src="screenshots/07-studio.webp" alt="Hifinis Audio Studio: waveform, A/B compare, loudness and true-peak meters, remaster presets" loading="lazy" width="540" height="1127"><figcaption>A full audio studio</figcaption></figure>
+  <figure><img src="screenshots/08-designs.webp" alt="Hifinis Home in the dark Cinema design" loading="lazy" width="540" height="1127"><figcaption>29 designs. Make it yours</figcaption></figure>
 </div>
 
 <main class="wrap">

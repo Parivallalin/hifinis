@@ -2,6 +2,14 @@
    the saved choice is on before the page draws (no dark flash). Adds the sun/moon button to the
    header nav of pages that have one. */
 (function () {
+  // The old GitHub copy (parivallalin.github.io/hifinis) keeps serving the files, so the app's
+  // app.json and old links still load over https, but a person who opens a page there is sent to
+  // the same page on hifinis.com, the real home (hosted on Cloudflare Pages since 2026-11-21).
+  if (/\.github\.io$/i.test(location.hostname)) {
+    var path = location.pathname.replace(/^\/hifinis(?=\/|$)/i, '') || '/';
+    location.replace('https://hifinis.com' + path + location.search + location.hash);
+    return;
+  }
   var root = document.documentElement;
   var KEY = 'hifinis-theme';
   try { if (localStorage.getItem(KEY) === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
