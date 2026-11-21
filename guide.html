@@ -7,6 +7,9 @@
 <meta name="description" content="How to use Hifinis: library, Now Playing, audio engines, USB DACs, EQ and effects, lyrics, sources, Audio Studio, Composer and Synth designer, Workshop, troubleshooting.">
 <link rel="icon" href="favicon.png">
 <link rel="canonical" href="https://hifinis.com/guide.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="theme.js"></script>
 <style>
   :root { --bg:#f7f7fb; --bg2:#ffffff; --card:#ffffff; --line:#e6e7f0; --fg:#141625; --muted:#5b6079; --accent:#4258e6; --accent2:#8b3dff; --cyan:#0aa5c9; }
@@ -15,16 +18,16 @@
   header.top nav { align-items: center; }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin:0; background:var(--bg); color:var(--fg); line-height:1.65; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { margin:0; background:var(--bg); color:var(--fg); line-height:1.65; font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
   a { color: var(--accent); }
   header.top { position:sticky; top:0; z-index:5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom:1px solid var(--line); }
-  header.top .wrap { display:flex; align-items:center; gap:12px; height:60px; max-width:1080px; margin:0 auto; padding:0 16px; }
+  header.top .wrap { display:flex; align-items:center; gap:12px; height:60px; max-width:1480px; margin:0 auto; padding:0 clamp(16px, 3vw, 48px); }
   header.top img { width:32px; height:32px; border-radius:9px; }
   header.top b { font-size:1.1em; }
   header.top nav { margin-left:auto; display:flex; gap:18px; font-size:0.95em; }
   header.top nav a { color:var(--muted); text-decoration:none; }
   header.top nav a:hover { color:var(--fg); }
-  .page { max-width:1080px; margin:0 auto; padding:0 16px 80px; display:grid; grid-template-columns: 250px minmax(0,1fr); gap:40px; }
+  .page { max-width:1480px; margin:0 auto; padding:0 clamp(16px, 3vw, 48px) 80px; display:grid; grid-template-columns: 290px minmax(0,1fr); gap:clamp(28px, 4vw, 64px); }
   aside { position:sticky; top:76px; align-self:start; max-height: calc(100vh - 90px); overflow:auto; padding-top:32px; }
   aside ol { list-style:none; padding:0; margin:0; font-size:0.92em; }
   aside li { margin:2px 0; }
@@ -36,7 +39,7 @@
   .byline { color:var(--muted); font-size:0.92em; margin:0 0 18px; }
   h2 { font-size:1.55em; letter-spacing:-0.02em; margin:56px 0 8px; padding-top:12px; border-top:1px solid var(--line); scroll-margin-top:70px; }
   h3 { font-size:1.12em; margin:28px 0 6px; scroll-margin-top:70px; }
-  p, li { max-width: 760px; }
+  p, li { max-width: 1040px; }
   code { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1px 6px; font-size:0.9em; }
   .tbl { overflow-x:auto; margin:14px 0 18px; border:1px solid var(--line); border-radius:14px; background:var(--card); }
   table { border-collapse:collapse; width:100%; font-size:0.93em; }
@@ -48,7 +51,7 @@
   .back { margin-top:48px; }
   footer { border-top:1px solid var(--line); color:var(--muted); font-size:0.9em; text-align:center; padding:24px 16px; }
   @media (max-width: 860px) { .page { display:block; } aside { position:static; max-height:none; padding-top:20px; }
-     aside ol { display:flex; flex-wrap:wrap; gap:6px; } aside a { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:4px 12px; }
+     aside ol { display:flex; flex-wrap:nowrap; gap:6px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x proximity; } aside li { flex:none; scroll-snap-align:start; } aside a { white-space:nowrap; } aside a { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:4px 12px; }
      header.top nav a.opt { display:none; } }
 </style>
 </head>
