@@ -11,6 +11,17 @@
     return;
   }
   var root = document.documentElement;
+  // Opened from inside the app (?from=app): hide the tip/Support link for the whole visit, so the
+  // Play build never leads anyone to an outside payment (Play payments policy).
+  try {
+    if (/[?&]from=app(&|$)/.test(location.search)) sessionStorage.setItem('hifinis-from-app', '1');
+    if (sessionStorage.getItem('hifinis-from-app') === '1') {
+      root.classList.add('from-app');
+      var st = document.createElement('style');
+      st.textContent = '.from-app a[href$="support.html"]{display:none!important}';
+      document.head.appendChild(st);
+    }
+  } catch (e) {}
   var KEY = 'hifinis-theme';
   try { if (localStorage.getItem(KEY) === 'dark') root.setAttribute('data-theme', 'dark'); } catch (e) {}
 
